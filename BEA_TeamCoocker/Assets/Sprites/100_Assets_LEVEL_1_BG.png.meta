@@ -70,6 +70,8 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 4096
+<<<<<<< HEAD
+=======
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -83,6 +85,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 2048
+>>>>>>> 5dd7da1aef311d28886d0c86b35de6972c9ffc5b
     resizeAlgorithm: 0
     textureFormat: 4
     textureCompression: 1
