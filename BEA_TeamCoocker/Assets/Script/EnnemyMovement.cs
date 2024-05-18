@@ -8,10 +8,14 @@ public class EnnemyMovement : MonoBehaviour
     private Vector2 _moveDirection;
     public float _movespeed = 5f;
     private Rigidbody2D _rb2d;
-    public States _CurrentState = States.IDLE;
+    public States _CurrentState= States.IDLE;
     public enum States
     {
         IDLE, WALK, PUNCH, HURTED, DEAD
+    }
+    private void Awake()
+    {
+        _rb2d = GetComponent<Rigidbody2D>();
     }
     // Start is called before the first frame update
     void Start()
@@ -95,8 +99,7 @@ public class EnnemyMovement : MonoBehaviour
         {
             _moveDirection = _target.position - transform.position;
         }
-        Quaternion lookAt = Quaternion.LookRotation(_moveDirection, Vector3.back);
-        _rb2d.SetRotation(lookAt);
+
         _rb2d.velocity = _moveDirection.normalized * _movespeed;
     }
 }
