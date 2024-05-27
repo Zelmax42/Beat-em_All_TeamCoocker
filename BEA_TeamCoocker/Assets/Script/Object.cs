@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Object : MonoBehaviour
 {
-    
+    [SerializeField]
     public ObjectData objectData;
     private int currentUsure;
     private bool isPickable = false;
@@ -16,7 +16,7 @@ public class Object : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Player player = GetComponent<Player>();
+        Player player = other.GetComponent<Player>();
         if (player != null)
         {
             isPickable = true;
@@ -25,7 +25,7 @@ public class Object : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        Player player = GetComponent<Player>();
+        Player player = other.GetComponent<Player>();
         if (player != null)
         {
             isPickable = false;
@@ -34,26 +34,40 @@ public class Object : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        Player player = GetComponent<Player>();
+        Player player = other.GetComponent<Player>();
         if (player != null && isPickable)
         {
-            HandleObjectPickup(player);
+           //Player methode pour pickup;
         }
     }
 
-    private void HandleObjectPickup(Player player)
-    {
-      
-        if (isPickable && currentUsure > 0)
-        {
 
-            //Appel du punch du player
-            
+    public void UseObjectToPunch()
+    { // Methode a appeler dans player quand il punch l'ennemi
+        if (currentUsure > 0)
+        {
+            currentUsure--;
+
             if (currentUsure <= 0)
             {
                 Destroy(gameObject);
             }
         }
     }
-}
 
+ 
+
+    // Handle collision with enemy
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       // Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+        if (enemy != null)
+        {
+            
+            enemy.TakeDamage(objectData.damage);
+
+            UseObjectToPunch();
+        }
+    }
+
+}
