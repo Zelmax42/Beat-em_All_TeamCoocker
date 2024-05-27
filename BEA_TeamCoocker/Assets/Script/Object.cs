@@ -57,14 +57,14 @@ public class Object : MonoBehaviour
 
  
 
-    // Handle collision with enemy
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
        // Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-        if (enemy != null)
+        //if (enemy != null)
         {
             
-            enemy.TakeDamage(objectData.damage);
+            //enemy.TakeDamage(objectData.damage);
 
             UseObjectToPunch();
         }
