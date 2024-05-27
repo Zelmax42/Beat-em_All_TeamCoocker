@@ -121,10 +121,10 @@
                 {
                     "name": "",
                     "id": "a91668ed-657a-4c63-81a6-b53836038960",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Gamepad",
                     "action": "Grab/jeter",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -135,7 +135,7 @@
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "Keyboard&Mouse",
                     "action": "Grab/jeter",
                     "isComposite": false,
                     "isPartOfComposite": false
