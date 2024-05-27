@@ -13,17 +13,15 @@ public class EnnemyMovement : MonoBehaviour
     public bool _isDefeated = false;
     private bool _isHurted = false;
     private float chrono = 0f;
+    public Animator _animator;
+
+    public EnnemyInit mobInit;
 
     private Transform _target;
     private Vector2 _moveDirection;
     public float _movespeed = 5f;
     private float _currentSpeed;
     public States _CurrentState= States.IDLE;
-
-    public enum mobType
-    {
-        NORMAL, BIG, FAST
-    }
 
     public enum States
     {
@@ -35,10 +33,15 @@ public class EnnemyMovement : MonoBehaviour
     private void Awake()
     {
         _rb2d = GetComponent<Rigidbody2D>();
+
     }
     // Start is called before the first frame update
     void Start()
     {
+        _nbPV = mobInit._nbHP;
+        _movespeed = mobInit._speed;
+        _damage = mobInit._damage;
+
         //initialisation de la cible, donc du joueur
         _target = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -65,25 +68,31 @@ public class EnnemyMovement : MonoBehaviour
         {
             case States.IDLE:
                 _currentSpeed = 0f;
+                _animator.SetFloat("Velocity", 0f);
                 break;
             case States.WALK:
                 _currentSpeed = _movespeed;
+                _animator.SetFloat("Velocity", 1f);
                 break;
             case States.PUNCH:
                 _currentSpeed = 0f;
+                _animator.SetTrigger("Attack");
                 break;
             case States.HURTED:
                 _currentSpeed = 0f;
+                _animator.SetTrigger("Hurted");
 
                 if (_nbPV <=0f)
                 {
                     _isDefeated = false;
+                    _animator.SetFloat("Life", 0f);
                 }
                 _isHurted = false;
 
                 break;
             case States.DEAD:
                 _currentSpeed = 0f;
+                
                 gameObject.SetActive(false);
                 break;
             default:
@@ -101,9 +110,6 @@ public class EnnemyMovement : MonoBehaviour
         {
             chrono += Time.deltaTime;
         }
-
-
-        Debug.Log(_CurrentState);
 
 
         if (_isHurted)
@@ -168,6 +174,7 @@ public class EnnemyMovement : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
         TransitionToState(States.PUNCH);
+
     }
 
     public void RandomStates()
@@ -181,6 +188,14 @@ public class EnnemyMovement : MonoBehaviour
             case 1:
 
                 _moveDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+                if (_moveDirection.x < 0)
+                {
+                    transform.localEulerAngles = new Vector3(0, 180, 0);
+                }
+                else
+                {
+                    transform.localEulerAngles = new Vector3(0, 0, 0);
+                }
 
                 TransitionToState(States.WALK);
                 break;
@@ -189,6 +204,15 @@ public class EnnemyMovement : MonoBehaviour
                 if (_target != null) // Si il y a une cible (Player), on le vise
                 {
                     _moveDirection = _target.position - transform.position;
+                }
+
+                if (_moveDirection.x < 0)
+                {
+                    transform.localEulerAngles = new Vector3(0, 180, 0);
+                }
+                else
+                {
+                    transform.localEulerAngles = new Vector3(0, 0, 0);
                 }
                 TransitionToState(States.WALK);
                 break;
