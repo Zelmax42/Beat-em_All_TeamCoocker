@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 233342bb604bc4a40982083b63f83c67, type: 3}
   m_Name: CanData
   m_EditorClassIdentifier: 
-  type: 0
-  value: 0
+  can: 1
+  value: 1
