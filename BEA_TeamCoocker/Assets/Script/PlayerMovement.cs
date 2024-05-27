@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Player player;
+    public GrabObject GrabObject;
     public Rigidbody2D _rb2d;
     public SpriteRenderer image;
     public Animator animator;
@@ -24,43 +26,49 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask groundLayer;
     public Vector2 groundCheckerSize = Vector2.one;
     public Transform groundCheckerTransform;
-    private bool _isGrounded = false;
+    
+    
 
     [Header("Punch")]
     public bool punchFinish = false;
     private bool _isPunched = false;
     public GameObject punch;
-
-    public States currentStates = States.Ilde;
-    public enum States
-    {
-        Ilde, Walk, Punch, Jump , Grab , Hurt, Fall, Ultimate , Dead
-    }
+   
     void Start()
     {
+        GrabObject = gameObject.GetComponent<GrabObject>();
+        GrabObject.Direction = _direction;
         
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_direction.magnitude > 0f || _direction.magnitude == 0f)
+        {
+            GrabObject.Direction = _direction.normalized;
+        }
+
         OnStateUpdate();
+
+        //Detection de sol 
         Collider2D ground = Physics2D.OverlapBox(groundCheckerTransform.position, groundCheckerSize, 0f, groundLayer);
         
         if (ground != null)
         {
-            _isGrounded = true;
+            player.isGrounded = true;
         }
         else
         {
-            _isGrounded = false;
+           player.isGrounded = false;
         }
 
     }
 
     private void OnDrawGizmos()
     {
-        if (_isGrounded)
+        //Dectection du sol dessiné
+        if (player.isGrounded)
         {
             Gizmos.color = Color.green;
         }
@@ -70,33 +78,35 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Gizmos.DrawCube(groundCheckerTransform.position, groundCheckerSize);
+
+        
     }
 
     public void OnStateEnter()
     {
-        switch(currentStates) 
+        switch(player.currentStates) 
         {
-            case States.Ilde:
+            case Player.States.IDLE:
                 break;
-            case States.Walk:  
+            case Player.States.WALK:  
                 break;
-            case States.Punch:
-                punch.SetActive(true);
+            case Player.States.PUNCH:
+                //animator.Setbool(false)
                 moveSpeed = 0f;
                 break;
-            case States.Jump:
+            case Player.States.JUMP:
                 _rb2d.gravityScale = 1f;
                 _isJumped = false;
                 _rb2d.velocity = new Vector2(transform.localPosition.x, jumpForce);
                 break;
-            case States.Hurt:   
+            case Player.States.HURT:
                 break;
-            case States.Fall:
+            case Player.States.FALL:
                 _rb2d.gravityScale = 2f;
                 break;
-            case States.Ultimate:
+            case Player.States.ULTIMATE:
                 break;
-            case States .Dead:
+            case Player.States.DEAD:
                 break;
 
         }
@@ -104,67 +114,67 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnStateUpdate()
     {
-        switch (currentStates)
+        switch (player.currentStates)
         {
-            case States.Ilde:
+            case Player.States.IDLE:
                 if(_direction.magnitude > 0f)
                 { 
-                    TransitionToState(States.Walk);
+                    TransitionToState(Player.States.WALK);
                 }
-                if (_isJumped && _isGrounded)
+                if (_isJumped && player.isGrounded)
                 {
-                    TransitionToState(States.Jump);
+                    TransitionToState(Player.States.JUMP);
                 }
                 if (_isPunched)
                 {
-                    TransitionToState(States.Punch);
+                    TransitionToState(Player.States.PUNCH);
                 }
                 break;
-            case States.Walk: 
+            case Player.States.WALK: 
                 transform.parent.Translate( moveSpeed * _direction * Time.deltaTime);
                 if ( _direction.magnitude == 0f )
                 {
-                    TransitionToState(States.Ilde);
+                    TransitionToState(Player.States.IDLE);
                 }
-                if (_isJumped && _isGrounded )
+                if (_isJumped && player.isGrounded )
                 {
-                    TransitionToState(States.Jump);
+                    TransitionToState(Player.States.JUMP);
                 }
                 if (_isPunched)
                 {
-                    TransitionToState(States.Punch);
+                    TransitionToState(Player.States.PUNCH);
                 }
                 break;
                 
-            case States.Jump:
+            case Player.States.JUMP:
                 
                 transform.parent.Translate(moveSpeed * _direction * Time.deltaTime);
                 
                     if (_rb2d.velocity.y < 0f)
                     {
-                        TransitionToState(States.Fall);
+                        TransitionToState(Player.States.FALL);
                     }
                 
                 break;
                 
-            case States.Fall:
+            case Player.States.FALL:
                 
                 transform.parent.Translate(moveSpeed * _direction * Time.deltaTime);
 
-                if (_isGrounded)
+                if (player.isGrounded)
                 {
                     if (_direction.magnitude == 0f)
                     {
-                        TransitionToState(States.Ilde);
+                        TransitionToState(Player.States.IDLE);
                     }
                     else if (_direction.magnitude > 0f)
                     {
-                        TransitionToState(States.Walk);
+                        TransitionToState(Player.States.WALK);
                     }
                 }
                 break;
 
-            case States.Punch:
+            case Player.States.PUNCH:
                 transform.parent.Translate(moveSpeed * _direction * Time.deltaTime);
                 
 
@@ -172,53 +182,53 @@ public class PlayerMovement : MonoBehaviour
                 {
                     if (_direction.magnitude == 0f)
                     {
-                        TransitionToState(States.Ilde);
+                        TransitionToState(Player.States.IDLE);
                     }
                     if (_direction.magnitude > 0f)
                     {
-                        TransitionToState(States.Walk);
+                        TransitionToState(Player.States.WALK);
                     }
                 }
                     break;   
-            case States.Hurt:
+            case Player.States.HURT:
                 break;
-            case States.Ultimate:
+            case Player.States.ULTIMATE:
                 break;
-            case States.Dead:
+            case Player.States.DEAD:
                 break;
         }
     }
 
     public void OnStateExit()
     {
-        switch (currentStates)
+        switch (player.currentStates)
         {
-            case States.Ilde:
+            case Player.States.IDLE:
                 break;
-            case States.Walk:
+            case Player.States.WALK:
                 break;
-            case States.Punch:
+            case Player.States.PUNCH:
                 moveSpeed = 5f;
-                punch.SetActive(false);
+               //animator.Setbool(false)
                 break;
-            case States.Jump:
+            case Player.States.JUMP:
                 break;
-            case States.Hurt:
+            case Player.States.HURT:
                 break;
-            case States.Fall:
+            case Player.States.FALL:
                 _rb2d.gravityScale = 0f;
                 break;
-            case States.Ultimate:
+            case Player.States.ULTIMATE:
                 break;
-            case States.Dead:
+            case Player.States.DEAD:
                 break;
         }
     }
 
-    public void TransitionToState(States newState)
+    public void TransitionToState(Player.States newState)
     {
         OnStateExit();
-        currentStates = newState;
+        player.currentStates = newState;
         OnStateEnter();
     }
 
@@ -252,11 +262,11 @@ public class PlayerMovement : MonoBehaviour
         switch (context.phase)
         {
             case InputActionPhase.Performed:
-                _isPunched = true;
+                //_isPunched = true;
 
                 break;
             case InputActionPhase.Canceled:
-                _isPunched = false;
+                //_isPunched = false;
                 break;
         }
     }
@@ -276,11 +286,18 @@ public class PlayerMovement : MonoBehaviour
     {
         switch (context.phase)
         {
+            
             case InputActionPhase.Performed:
-
+                Debug.Log("je prend");
+                player.isGrabing = true;
+                if(GrabObject.itemHolding != null)
+                {
+                    GrabObject.itemThrow = true;
+                }
+                
                 break;
             case InputActionPhase.Canceled:
-
+                player.isGrabing = false;
                 break;
         }
     }
