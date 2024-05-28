@@ -46,7 +46,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   throwDistance: 4
-  travelDuration: 1
+  travelDuration: 0.8
   type: 0
   usure: 0
   damage: 0
