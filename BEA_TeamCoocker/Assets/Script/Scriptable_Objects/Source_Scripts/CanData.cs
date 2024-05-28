@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static Unity.VisualScripting.Dependencies.Sqlite.SQLite3;
+
 
 
 [CreateAssetMenu(fileName = "NewCanData", menuName = "SO/Can Data", order = 1)]

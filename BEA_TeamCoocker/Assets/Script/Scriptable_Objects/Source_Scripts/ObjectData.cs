@@ -5,6 +5,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewObjectData", menuName = "SO/ObjectData", order = 2)]
 public class ObjectData : ScriptableObject
 {
+    public AnimationCurve myCurve;
+    public float throwDistance;
+    public float travelDuration;
     public enum ObjectType
     {
         Leger,
