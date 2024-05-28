@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 321201273}
   - component: {fileID: 321201276}
   - component: {fileID: 321201277}
+  - component: {fileID: 321201278}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -177,7 +178,6 @@ MonoBehaviour:
   GrabObject: {fileID: 0}
   _rb2d: {fileID: 321201275}
   image: {fileID: 0}
-  animator: {fileID: 0}
   moveSpeed: 5
   playerMovement: 0
   jumpForce: 5
@@ -186,7 +186,6 @@ MonoBehaviour:
     m_Bits: 64
   groundCheckerSize: {x: 0.2, y: 0.04}
   groundCheckerTransform: {fileID: 1256509648}
-  punchFinish: 0
   punch: {fileID: 404567104}
 --- !u!61 &321201274
 BoxCollider2D:
@@ -324,6 +323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f4793cda2d32d459bb15714e8b4439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectData: {fileID: 11400000, guid: c77857f2473d9494ca387b4e60e61484, type: 2}
   player: {fileID: 11400000, guid: f9eff765a4c6bde49bec2c282c4547c1, type: 2}
   objectGrabed: {fileID: 459177361}
   pickUP:
@@ -332,6 +332,20 @@ MonoBehaviour:
   itemThrow: 0
   itemHolding: {fileID: 0}
   currentStates: 0
+--- !u!114 &321201278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 321201271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21301e2feb47fac44b3e9748d8162038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hurtbox: {fileID: 404567104}
+  player: {fileID: 321201273}
 --- !u!1 &404567104
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +435,7 @@ GameObject:
   m_Layer: 0
   m_Name: ObjectGrabed
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -484,7 +498,7 @@ GameObject:
   - component: {fileID: 1047871075}
   - component: {fileID: 1047871074}
   m_Layer: 7
-  m_Name: Square
+  m_Name: Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

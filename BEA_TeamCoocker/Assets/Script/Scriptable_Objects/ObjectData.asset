@@ -12,6 +12,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1237cf446aea81d46944cb648444d579, type: 3}
   m_Name: ObjectData
   m_EditorClassIdentifier: 
+  myCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.015980143
+      value: 0
+      inSlope: 6.014002
+      outSlope: 6.014002
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.0382451
+    - serializedVersion: 3
+      time: 0.6425159
+      value: 1.718713
+      inSlope: 0.055933177
+      outSlope: 0.055933177
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0051596
+      value: -0.42836097
+      inSlope: -7.9168334
+      outSlope: -7.9168334
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.032940336
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  throwDistance: 4
+  travelDuration: 1
   type: 0
   usure: 0
   damage: 0
