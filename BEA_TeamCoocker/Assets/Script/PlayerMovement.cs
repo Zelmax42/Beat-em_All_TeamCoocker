@@ -63,7 +63,12 @@ public class PlayerMovement : MonoBehaviour
         {
            player.isGrounded = false;
         }
+        if (player.pvPlayer <= 0)
+        {
+            _animator.SetFloat("Life", 0);
 
+            TransitionToState(Player.States.HURT);
+        }
     }
 
     private void OnDrawGizmos()
@@ -104,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case Player.States.HURT:
                 _animator.SetTrigger("Hurted");
+
                 break;
             case Player.States.FALL:
                 _rb2d.gravityScale = 2f;

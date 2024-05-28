@@ -16,8 +16,7 @@ public class EnnemyMovement : MonoBehaviour
     public Animator _animator;
 
     public EnnemyInit mobInit;
-    public PlayerHealth _playerHealth;
-
+    public Player _player;
 
     private Transform _target;
     private Vector2 _moveDirection;
@@ -79,14 +78,14 @@ public class EnnemyMovement : MonoBehaviour
             case States.PUNCH:
                 _currentSpeed = 0f;
                 _animator.SetTrigger("Attack");
-                _playerHealth._PlayerHP -= _damage;
+                _player.pvPlayer -= _damage;
                 break;
             case States.HURTED:
                 _currentSpeed = 0f;
                 _animator.SetTrigger("Hurted");
 
 
-                if (_nbPV <=0f)
+                if (_nbPV <= 0f)
                 {
                     _isDefeated = false;
                     _animator.SetFloat("Life", 0f);
