@@ -29,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     
 
     [Header("Punch")]
-    public bool punchFinish = false;
     private bool _isPunched = false;
     public GameObject punch;
 
@@ -187,10 +186,13 @@ public class PlayerMovement : MonoBehaviour
                 break;
 
             case Player.States.PUNCH:
-                transform.parent.Translate(moveSpeed * _direction * Time.deltaTime);
-                
+                //transform.parent.Translate(moveSpeed * _direction * Time.deltaTime);
+                if(_isPunched && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.2f)
+                {
+                    _animator.SetTrigger("Attack");
+                }
 
-                if (punchFinish)
+                if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && !_isPunched)
                 {
                     if (_direction.magnitude == 0f)
                     {
@@ -221,7 +223,6 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case Player.States.PUNCH:
                 moveSpeed = 5f;
-               //animator.Setbool(false)
                 break;
             case Player.States.JUMP:
                 break;
@@ -284,11 +285,11 @@ public class PlayerMovement : MonoBehaviour
         switch (context.phase)
         {
             case InputActionPhase.Performed:
-                //_isPunched = true;
+                _isPunched = true;
 
                 break;
             case InputActionPhase.Canceled:
-                //_isPunched = false;
+                _isPunched = false;
                 break;
         }
     }
