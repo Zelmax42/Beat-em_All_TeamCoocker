@@ -10,6 +10,7 @@ public class GrabObject : MonoBehaviour
     public LayerMask pickUP;
     public bool itemThrow;
     
+    
     public Vector3 Direction {get;set;}
 
     public GameObject itemHolding;
@@ -62,10 +63,10 @@ public class GrabObject : MonoBehaviour
                 if (itemHolding != null)
                 {
                     itemHolding.transform.parent = null;
-                    StartCoroutine(ThrowItem(itemHolding));
+                    itemHolding.GetComponent<ObjectThrow>().ThrowObject();
                     if (itemHolding.GetComponent<Rigidbody2D>())
                         itemHolding.GetComponent<Rigidbody2D>().simulated = true;
-                    
+                    itemHolding = null;
                     itemThrow = false;
                    
                 }
@@ -85,13 +86,19 @@ public class GrabObject : MonoBehaviour
                     itemHolding = pickUpItem.gameObject;
                     itemHolding.transform.position = objectGrabed.position;
                     itemHolding.transform.parent = objectGrabed.transform;
+                    itemHolding.transform.localEulerAngles = objectGrabed.localEulerAngles;
                     if (itemHolding.GetComponent<Rigidbody2D>())
                         itemHolding.GetComponent<Rigidbody2D>().simulated = false;
                 }
                 
-                if (!player.isGrabing && itemHolding)
+                if (!player.isGrabing)
                 {
                     TransitionToState(States.THROW);
+                }
+
+                if (!player.isGrabing && !itemHolding)
+                {
+                    TransitionToState(States.NOHOLDING);
                 }
                 break;
         }
@@ -132,7 +139,9 @@ public class GrabObject : MonoBehaviour
 
         while (chrono / timer < 1f)
         {
-            Vector2 curve = new Vector2(chrono / timer * objectData.throwDistance, objectData.myCurve.Evaluate(chrono / timer));
+           
+            Vector2 curve = new Vector2(chrono / timer * objectData.throwDistance * item.transform.right.x, objectData.myCurve.Evaluate(chrono / timer));
+            Debug.Log(curve);
             item.transform.position = startPosition + (Vector3)curve;
             yield return new WaitForEndOfFrame();          
             chrono += Time.deltaTime;
