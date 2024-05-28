@@ -51,6 +51,13 @@ public class EnnemyMovement : MonoBehaviour
     void Update()
     {
         OnStateUpdate();
+
+        if (_nbPV <= 0f)
+        {
+            _isDefeated = false;
+            _animator.SetFloat("Life", 0f);
+            TransitionToState(States.HURTED);
+        }
     }
 
     private void FixedUpdate()
@@ -85,11 +92,6 @@ public class EnnemyMovement : MonoBehaviour
                 _animator.SetTrigger("Hurted");
 
 
-                if (_nbPV <= 0f)
-                {
-                    _isDefeated = false;
-                    _animator.SetFloat("Life", 0f);
-                }
                 _isHurted = false;
 
                 break;
@@ -226,7 +228,13 @@ public class EnnemyMovement : MonoBehaviour
     {
         _nbPV -= damage;
         _isHurted = true;
-    }       
+    }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("mob touché");
+        _nbPV -= _player.dmgPlayer;
+    }
 
     #endregion
 }

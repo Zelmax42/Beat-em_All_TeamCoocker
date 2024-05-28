@@ -8,7 +8,6 @@ public class SceneManager : MonoBehaviour
     public Player _player;
     private Image _image;
     private float _maxPV=50;
-    private float _maxStamina = 5;
     // Start is called before the first frame update
     void Start()
     {
