@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1237cf446aea81d46944cb648444d579, type: 3}
   m_Name: ObjectData
   m_EditorClassIdentifier: 
-<<<<<<< HEAD
   myCurve:
     serializedVersion: 2
     m_Curve:
@@ -48,8 +47,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   throwDistance: 4
   travelDuration: 1
-=======
->>>>>>> 6853c6957142c3a2c4768e08cfd220db8e0679fc
   type: 0
   usure: 0
   damage: 0
