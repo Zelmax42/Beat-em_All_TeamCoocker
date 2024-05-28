@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9f4793cda2d32d459bb15714e8b4439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectData: {fileID: 11400000, guid: c77857f2473d9494ca387b4e60e61484, type: 2}
   player: {fileID: 11400000, guid: f9eff765a4c6bde49bec2c282c4547c1, type: 2}
   objectGrabed: {fileID: 5481568670832672169}
   pickUP:
