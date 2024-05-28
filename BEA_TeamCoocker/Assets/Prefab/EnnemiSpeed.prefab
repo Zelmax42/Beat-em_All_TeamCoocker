@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 1307071989912731310}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.12, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.135, y: 0.392, z: 0}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4149007474329476443}
@@ -174,7 +174,6 @@ GameObject:
   - component: {fileID: 538446043688757511}
   - component: {fileID: 7870108837866622800}
   - component: {fileID: 984533996514222652}
-  - component: {fileID: 3350722543772538754}
   - component: {fileID: 1906967304062452235}
   m_Layer: 7
   m_Name: Ennemy
@@ -192,7 +191,7 @@ Transform:
   m_GameObject: {fileID: 3011910931120230929}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3894737, y: -0.5068617, z: -1.9410851}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -252,7 +251,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!50 &538446043688757511
 Rigidbody2D:
   serializedVersion: 4
@@ -297,7 +296,8 @@ MonoBehaviour:
   _speed: 0
   _isDefeated: 0
   _animator: {fileID: 1906967304062452235}
-  mobInit: {fileID: 3350722543772538754}
+  mobInit: {fileID: 0}
+  _playerHealth: {fileID: 0}
   _movespeed: 2
   _CurrentState: 0
 --- !u!114 &984533996514222652
@@ -316,22 +316,6 @@ MonoBehaviour:
   _damage: 0
   _speed: 0
   _Type: 0
---- !u!114 &3350722543772538754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3011910931120230929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae1f3014a55555947965a8b9ac4af0f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _nbHP: 0
-  _damage: 0
-  _speed: 0
-  _Type: 2
 --- !u!95 &1906967304062452235
 Animator:
   serializedVersion: 5
@@ -455,7 +439,7 @@ Transform:
   m_GameObject: {fileID: 8134336129512624308}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.54, y: 3.76, z: 1.9410851}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

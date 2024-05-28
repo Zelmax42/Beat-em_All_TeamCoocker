@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     public GrabObject GrabObject;
     public Rigidbody2D _rb2d;
     public SpriteRenderer image;
-    public Animator animator;
 
     [Header("Speed")]
     public float moveSpeed = 5f;
@@ -30,15 +29,17 @@ public class PlayerMovement : MonoBehaviour
     
 
     [Header("Punch")]
-    public bool punchFinish = false;
     private bool _isPunched = false;
     public GameObject punch;
+
+    private Animator _animator;
    
     void Start()
     {
         GrabObject = gameObject.GetComponent<GrabObject>();
         GrabObject.Direction = _direction;
         
+        _animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -62,7 +63,12 @@ public class PlayerMovement : MonoBehaviour
         {
            player.isGrounded = false;
         }
+        if (player.pvPlayer <= 0)
+        {
+            _animator.SetFloat("Life", 0);
 
+            TransitionToState(Player.States.HURT);
+        }
     }
 
     private void OnDrawGizmos()
@@ -87,19 +93,23 @@ public class PlayerMovement : MonoBehaviour
         switch(player.currentStates) 
         {
             case Player.States.IDLE:
+                _animator.SetFloat("Speed", 0f);
                 break;
             case Player.States.WALK:  
                 break;
             case Player.States.PUNCH:
-                //animator.Setbool(false)
+                _animator.SetTrigger("Attack");
                 moveSpeed = 0f;
                 break;
             case Player.States.JUMP:
                 _rb2d.gravityScale = 1f;
                 _isJumped = false;
                 _rb2d.velocity = new Vector2(transform.localPosition.x, jumpForce);
+                _animator.SetBool("isGrounded", false);
                 break;
             case Player.States.HURT:
+                _animator.SetTrigger("Hurted");
+
                 break;
             case Player.States.FALL:
                 _rb2d.gravityScale = 2f;
@@ -130,8 +140,11 @@ public class PlayerMovement : MonoBehaviour
                     TransitionToState(Player.States.PUNCH);
                 }
                 break;
-            case Player.States.WALK: 
-                transform.parent.Translate( moveSpeed * _direction * Time.deltaTime);
+            case Player.States.WALK:
+
+                transform.parent.Translate(moveSpeed * _direction * Time.deltaTime);
+                _animator.SetFloat("Speed", _direction.magnitude);
+
                 if ( _direction.magnitude == 0f )
                 {
                     TransitionToState(Player.States.IDLE);
@@ -147,10 +160,12 @@ public class PlayerMovement : MonoBehaviour
                 break;
                 
             case Player.States.JUMP:
-                
+
                 transform.parent.Translate(moveSpeed * _direction * Time.deltaTime);
-                
-                    if (_rb2d.velocity.y < 0f)
+                _animator.SetFloat("Speed", _direction.magnitude);
+                _animator.SetFloat("Jump", _rb2d.velocity.y);
+
+                if (_rb2d.velocity.y < 0f)
                     {
                         TransitionToState(Player.States.FALL);
                     }
@@ -158,8 +173,10 @@ public class PlayerMovement : MonoBehaviour
                 break;
                 
             case Player.States.FALL:
-                
+
                 transform.parent.Translate(moveSpeed * _direction * Time.deltaTime);
+                _animator.SetFloat("Speed", _direction.magnitude);
+                _animator.SetFloat("Jump", _rb2d.velocity.y);
 
                 if (player.isGrounded)
                 {
@@ -175,10 +192,13 @@ public class PlayerMovement : MonoBehaviour
                 break;
 
             case Player.States.PUNCH:
-                transform.parent.Translate(moveSpeed * _direction * Time.deltaTime);
-                
+                //transform.parent.Translate(moveSpeed * _direction * Time.deltaTime);
+                if(_isPunched && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.2f)
+                {
+                    _animator.SetTrigger("Attack");
+                }
 
-                if (punchFinish)
+                if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f && !_isPunched)
                 {
                     if (_direction.magnitude == 0f)
                     {
@@ -209,7 +229,6 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case Player.States.PUNCH:
                 moveSpeed = 5f;
-               //animator.Setbool(false)
                 break;
             case Player.States.JUMP:
                 break;
@@ -217,6 +236,7 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case Player.States.FALL:
                 _rb2d.gravityScale = 0f;
+                _animator.SetBool("isGrounded", true);
                 break;
             case Player.States.ULTIMATE:
                 break;
@@ -238,6 +258,15 @@ public class PlayerMovement : MonoBehaviour
         {
             case InputActionPhase.Performed:                    
                 _direction =  context.ReadValue<Vector2>();
+                if (_direction.x < 0f)
+                {
+                    transform.parent.localEulerAngles = new Vector3(0f, 180f, 0f);
+                    _direction.x = -_direction.x;
+                }
+                else if (_direction.x > 0f)
+                {
+                    transform.parent.localEulerAngles = new Vector3(0f, 0f, 0f);
+                }
                 break;
             case InputActionPhase.Canceled:
                 _direction = Vector2.zero;
@@ -262,11 +291,11 @@ public class PlayerMovement : MonoBehaviour
         switch (context.phase)
         {
             case InputActionPhase.Performed:
-                //_isPunched = true;
+                _isPunched = true;
 
                 break;
             case InputActionPhase.Canceled:
-                //_isPunched = false;
+                _isPunched = false;
                 break;
         }
     }
