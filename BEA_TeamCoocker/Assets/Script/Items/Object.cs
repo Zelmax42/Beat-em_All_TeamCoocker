@@ -9,6 +9,7 @@ public class Object : MonoBehaviour
     private int currentUsure;
     private bool isPickable = false;
 
+
     private void Start()
     {
         currentUsure = objectData.usure;
@@ -37,7 +38,7 @@ public class Object : MonoBehaviour
         Player player = other.GetComponent<Player>();
         if (player != null && isPickable)
         {
-           //Player methode pour pickup;
+
         }
     }
 
@@ -55,19 +56,20 @@ public class Object : MonoBehaviour
         }
     }
 
- 
 
-    
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       // Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-        //if (enemy != null)
+        EnnemyMovement enemy = collision.collider.GetComponent<EnnemyMovement>();
+        if (enemy != null)
         {
             
-            //enemy.TakeDamage(objectData.damage);
+            enemy.GotDamaged(objectData.damage);
 
+            
             UseObjectToPunch();
         }
-    }
 
+    }
 }
