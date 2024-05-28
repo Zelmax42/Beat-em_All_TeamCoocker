@@ -27,6 +27,5 @@ public class Punch : MonoBehaviour
     public void Deactivate()
     {
         hurtbox.SetActive(false);
-        player.punchFinish = true;
     }
 }
