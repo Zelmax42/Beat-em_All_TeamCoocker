@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1237cf446aea81d46944cb648444d579, type: 3}
   m_Name: ObjectData
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   myCurve:
     serializedVersion: 2
     m_Curve:
@@ -47,10 +48,17 @@ MonoBehaviour:
     m_RotationOrder: 4
   throwDistance: 4
   travelDuration: 1
+=======
+>>>>>>> 6853c6957142c3a2c4768e08cfd220db8e0679fc
   type: 0
   usure: 0
   damage: 0
   canDrop: 0
-  lootTable: []
+  lootTable:
+  - {fileID: 124921360077398183, guid: 20767c50bc1252e4eabfca1001c31ceb, type: 3}
+  - {fileID: 5413436714244994961, guid: e87f4d247e4087d4393c817ef79ac90e, type: 3}
+  - {fileID: 3759662753385937268, guid: ad20454ab0f4f1447a3d1db034562ede, type: 3}
+  - {fileID: 8108452928865159384, guid: 5f94e175b02b7b14fa320062a2a9d30e, type: 3}
+  - {fileID: 7793193561467946610, guid: fd942f853d12aca4b8e0e5b18334cc89, type: 3}
   _gravity: 0
   _mass: 0
