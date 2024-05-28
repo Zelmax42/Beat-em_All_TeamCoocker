@@ -10,7 +10,7 @@ public class Punch : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+       
     }
 
     // Update is called once per frame
@@ -27,6 +27,5 @@ public class Punch : MonoBehaviour
     public void Deactivate()
     {
         hurtbox.SetActive(false);
-        player.punchFinish = true;
     }
 }

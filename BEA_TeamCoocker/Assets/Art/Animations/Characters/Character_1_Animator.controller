@@ -337,7 +337,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: VelocityX
     m_Mirror: 0
-  m_BlendParameter: VelocityX
+  m_BlendParameter: Speed
   m_BlendParameterY: VelocityX
   m_MinThreshold: 0
   m_MaxThreshold: 1
@@ -685,13 +685,13 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: VelocityX
+  - m_Name: Speed
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: VelocityY
+  - m_Name: Jump
     m_Type: 1
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -1034,7 +1034,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: Speed
     m_Mirror: 0
-  m_BlendParameter: VelocityX
+  m_BlendParameter: Speed
   m_BlendParameterY: Blend
   m_MinThreshold: 0
   m_MaxThreshold: 1
@@ -1462,7 +1462,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: VelocityX
     m_Mirror: 0
-  m_BlendParameter: VelocityY
+  m_BlendParameter: Jump
   m_BlendParameterY: VelocityX
   m_MinThreshold: -1
   m_MaxThreshold: 1
@@ -1517,7 +1517,7 @@ BlendTree:
     m_CycleOffset: 0
     m_DirectBlendParameter: VelocityX
     m_Mirror: 0
-  m_BlendParameter: VelocityY
+  m_BlendParameter: Jump
   m_BlendParameterY: VelocityX
   m_MinThreshold: -1
   m_MaxThreshold: 1

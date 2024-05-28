@@ -1,10 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class GrabObject : MonoBehaviour
 {
+    public ObjectData objectData;
     public Player player;
     public Transform objectGrabed;
     public LayerMask pickUP;
@@ -20,8 +20,12 @@ public class GrabObject : MonoBehaviour
         NOHOLDING,HOLDING,THROW
     }
 
-    
-    
+    public void Start()
+    {
+        
+    }
+
+   
        
     private void Update()
     {
@@ -52,28 +56,30 @@ public class GrabObject : MonoBehaviour
                 }
 
                 break;
-            case States.THROW:
-                
+            case States.THROW: 
+               
+
                 if (itemHolding != null)
                 {
-                    itemHolding.transform.position = transform.position + Direction;
                     itemHolding.transform.parent = null;
+                    StartCoroutine(ThrowItem(itemHolding));
                     if (itemHolding.GetComponent<Rigidbody2D>())
                         itemHolding.GetComponent<Rigidbody2D>().simulated = true;
-                    itemHolding = null;
+                    
                     itemThrow = false;
+                   
                 }
-                
                
                 if (!player.isGrabing)
                 {
                     TransitionToState(States.NOHOLDING);
                 }
-
-
+                
                 break;
             case States.HOLDING:
+
                 Collider2D pickUpItem = Physics2D.OverlapCircle(transform.position + Direction, 0.4f, pickUP);
+
                 if (pickUpItem)
                 {
                     itemHolding = pickUpItem.gameObject;
@@ -99,6 +105,7 @@ public class GrabObject : MonoBehaviour
             case States.THROW:
                 break;
             case States.HOLDING:
+                
                 break;
         }
     }
@@ -110,19 +117,28 @@ public class GrabObject : MonoBehaviour
         OnStateEnter();
     }
     
-    /*IEnumerator ThrowItem(GameObject item)
+    IEnumerator ThrowItem(GameObject item)
     {
-        Vector3 startPoint = item.transform.position;
-        Vector3 endPoint = transform.position + Direction * 2;
-        item.transform.parent = null;
+        
+        Vector3 startPosition = item.transform.position;
+       
+        float timer = objectData.travelDuration;
+        float chrono = 0f;
 
-        for (int i = 0; i > 25; i++)
+        int step = 25;
+        float intervalMeter = objectData.throwDistance / step;
+        float intervalTime = 1f / step;
+
+
+        while (chrono / timer < 1f)
         {
-            item.transform.position = Vector3.Lerp(startPoint, endPoint, i * 0.04f);
-            yield return null;
+            Vector2 curve = new Vector2(chrono / timer * objectData.throwDistance, objectData.myCurve.Evaluate(chrono / timer));
+            item.transform.position = startPosition + (Vector3)curve;
+            yield return new WaitForEndOfFrame();          
+            chrono += Time.deltaTime;
         }
-        if (item.GetComponent<Rigidbody2D>())
-            item.GetComponent<Rigidbody2D>().simulated = true;
-
-    }*/
+        itemHolding = null;
+        StopCoroutine(ThrowItem(item));
+    }
 }
+
