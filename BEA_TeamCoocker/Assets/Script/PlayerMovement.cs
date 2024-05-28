@@ -45,10 +45,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (_direction.magnitude > 0f || _direction.magnitude == 0f)
         {
             GrabObject.Direction = _direction.normalized;
         }
+
+        transform.localPosition = Vector3.zero;
 
         OnStateUpdate();
 
