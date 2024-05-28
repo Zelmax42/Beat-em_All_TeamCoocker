@@ -261,6 +261,7 @@ public class PlayerMovement : MonoBehaviour
         {
             case InputActionPhase.Performed:                    
                 _direction =  context.ReadValue<Vector2>();
+               
                 if (_direction.x < 0f)
                 {
                     transform.parent.localEulerAngles = new Vector3(0f, 180f, 0f);
