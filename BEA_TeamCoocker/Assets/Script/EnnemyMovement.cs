@@ -239,7 +239,6 @@ public class EnnemyMovement : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("PlayerHitBox"))
         {
-            Debug.Log("mob touché");
             _nbPV -= _player.dmgPlayer;
         }
 
