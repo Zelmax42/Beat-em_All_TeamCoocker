@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1302816224015318718}
   - component: {fileID: 2326727724065033453}
   - component: {fileID: 3427908437102035533}
+  - component: {fileID: 900670040024113256}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -209,6 +210,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &900670040024113256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494406664533573708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eef8a5fee0a1014695def6f28551a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 11400000, guid: f9eff765a4c6bde49bec2c282c4547c1, type: 2}
+  _PlayerHP: 10
 --- !u!1 &887272752808723102
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,9 +597,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1866409363148632171}
   - component: {fileID: 5686677729125853549}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HitBox_Attack
-  m_TagString: Untagged
+  m_TagString: PlayerHitBox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

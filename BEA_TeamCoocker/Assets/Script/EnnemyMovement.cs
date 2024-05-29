@@ -62,7 +62,7 @@ public class EnnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb2d.velocity = _moveDirection.normalized * _currentSpeed;
+        //_rb2d.velocity = _moveDirection.normalized * _currentSpeed;
     }
 
     #endregion
@@ -128,7 +128,7 @@ public class EnnemyMovement : MonoBehaviour
 
                 break;
             case States.WALK:
-
+                transform.parent.Translate(_currentSpeed * _moveDirection * Time.deltaTime);
                 break;
             case States.PUNCH:
                 break;
@@ -205,7 +205,7 @@ public class EnnemyMovement : MonoBehaviour
                 TransitionToState(States.WALK);
                 break;
             case 2:
-
+                Debug.Log(_currentSpeed);
                 if (_target != null) // Si il y a une cible (Player), on le vise
                 {
                     _moveDirection = _target.position - transform.position;
