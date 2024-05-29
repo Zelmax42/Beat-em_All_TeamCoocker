@@ -6,10 +6,13 @@ public class BossV1 : MonoBehaviour
 {
     private Vector2 _moveDirection;
     public float _moveSpeed = 2f;
-    public float _dashSpeed = 5f;
+    public float _dashSpeed = 50f;
     public float _chrono = 0f;
     public float _chronoDash = 0f;
     private Transform _target;
+
+    public float _BossHP = 100f;
+    private bool _isHurted = false;
 
     public States _currentState = States.IDLE;
 
@@ -40,6 +43,7 @@ public class BossV1 : MonoBehaviour
             case States.ATTACK:
                 break;
             case States.HURT:
+
                 break;
             case States.DEAD:
                 break;
@@ -62,13 +66,25 @@ public class BossV1 : MonoBehaviour
             BossDash();
             _chronoDash = 0f;
         }
+        else
+        {
+            _chronoDash += Time.deltaTime;
+        }
 
         switch (_currentState)
         {
             case States.IDLE:
+                if (_isHurted)
+                {
+                    TransitionToState(States.HURT);
+                }
                 break;
             case States.MOVE:
                 transform.parent.Translate(_moveSpeed * _moveDirection * Time.deltaTime);
+                if (_isHurted)
+                {
+                    TransitionToState(States.HURT);
+                }
                 break;
             case States.ATTACK:
                 break;
@@ -90,6 +106,7 @@ public class BossV1 : MonoBehaviour
             case States.ATTACK:
                 break;
             case States.HURT:
+                _isHurted = false;
                 break;
             case States.DEAD:
                 break;
@@ -103,6 +120,14 @@ public class BossV1 : MonoBehaviour
         OnstateEnter();
     }
 
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (GameObject.FindGameObjectWithTag("PlayerHitBox"))
+        {
+            _isHurted = true;
+        }
+    }
+
     public void BossMovement()
     {
         _moveDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
@@ -113,7 +138,9 @@ public class BossV1 : MonoBehaviour
         if (_target != null)
         {
             _moveDirection = _target.position - transform.position;
-            _moveDirection.Normalize();
+            //_moveDirection.Normalize();
+            transform.parent.Translate(_dashSpeed * _moveDirection * Time.deltaTime);
+
         }
     }
 }
