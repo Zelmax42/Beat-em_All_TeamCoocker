@@ -232,8 +232,12 @@ public class EnnemyMovement : MonoBehaviour
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("mob touché");
-        _nbPV -= _player.dmgPlayer;
+        if (GameObject.FindGameObjectWithTag("PlayerHitBox"))
+        {
+            Debug.Log("mob touché");
+            _nbPV -= _player.dmgPlayer;
+        }
+
     }
 
     #endregion
