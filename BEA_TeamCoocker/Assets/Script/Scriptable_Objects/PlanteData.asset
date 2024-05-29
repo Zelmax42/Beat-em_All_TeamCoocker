@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1237cf446aea81d46944cb648444d579, type: 3}
+  m_Name: PlanteData
+  m_EditorClassIdentifier: 
+  myCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.015980143
+      value: 0
+      inSlope: 6.014002
+      outSlope: 6.014002
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.0382451
+    - serializedVersion: 3
+      time: 0.6425159
+      value: 1.718713
+      inSlope: 0.055933177
+      outSlope: 0.055933177
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0051596
+      value: -0.42836097
+      inSlope: -7.9168334
+      outSlope: -7.9168334
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.032940336
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  throwDistance: 4
+  travelDuration: 1
+  type: 0
+  usure: 1
+  damage: 0
+  canDrop: 0
+  lootTable:
+  - {fileID: 5413436714244994961, guid: e87f4d247e4087d4393c817ef79ac90e, type: 3}
+  _gravity: 0
+  _mass: 0
