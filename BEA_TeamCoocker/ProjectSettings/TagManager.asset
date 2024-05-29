@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Box
   - Ennemi
+  - PlayerHitBox
   layers:
   - Default
   - TransparentFX
