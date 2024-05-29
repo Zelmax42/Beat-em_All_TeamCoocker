@@ -23,17 +23,17 @@ public class EnnemyInit : MonoBehaviour
             case States.NORMAL:
                 _nbHP = 3f;
                 _damage = 1f;
-                _speed = 2f;
+                _speed = 1f;
                 break;
             case States.BIG:
                 _nbHP = 5f;
                 _damage = 3f;
-                _speed = 1f;
+                _speed = 0.5f;
                 break;
             case States.SPEED:
                 _nbHP = 2f;
                 _damage = 1f;
-                _speed = 5f;
+                _speed = 1.5f;
                 break;
         }
     }
