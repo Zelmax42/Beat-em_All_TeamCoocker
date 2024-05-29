@@ -154,7 +154,7 @@ MonoBehaviour:
   objectGrabed: {fileID: 5481568670832672169}
   pickUP:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 256
   itemThrow: 0
   itemHolding: {fileID: 0}
   currentStates: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 11400000, guid: f9eff765a4c6bde49bec2c282c4547c1, type: 2}
-  _PlayerHP: 10
+  _PlayerHP: 50
 --- !u!1 &887272752808723102
 GameObject:
   m_ObjectHideFlags: 0

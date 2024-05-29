@@ -7,18 +7,25 @@ public class Item : MonoBehaviour
     public ObjectData objectData;
     public float spawnRadius = 10f;
     public float currentUsure;
+    public bool isThrow;
 
     private void Start()
     {
+        isThrow = false;
         currentUsure = objectData.usure;
 
         //Vector2 randomPosition = Random.insideUnitCircle * spawnRadius;
         //transform.position = new Vector3(randomPosition.x, randomPosition.y, transform.position.z);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-       
+       if( collision.gameObject.layer == 7 && isThrow)
+        {
+            Debug.Log("touché");
+            collision.gameObject.GetComponent<EnnemyMovement>().GotDamaged(objectData.damage);
+            Damaged();
+        }
 
     }
 

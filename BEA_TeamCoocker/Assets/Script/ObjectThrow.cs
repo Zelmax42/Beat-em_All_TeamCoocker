@@ -24,7 +24,7 @@ public class ObjectThrow : MonoBehaviour
 
     IEnumerator ThrowItem(GameObject item)
     {
-
+        item.GetComponent<Item>().isThrow = true;
         Vector3 startPosition = item.transform.position;
 
         float timer = objectData.travelDuration;
@@ -39,12 +39,11 @@ public class ObjectThrow : MonoBehaviour
         {
 
             Vector2 curve = new Vector2(chrono / timer * objectData.throwDistance * item.transform.right.x, objectData.myCurve.Evaluate(chrono / timer));
-            Debug.Log(curve);
             item.transform.position = startPosition + (Vector3)curve;
             yield return new WaitForEndOfFrame();
             chrono += Time.deltaTime;
         }
-       
+        item.GetComponent<Item>().isThrow = false;
         StopCoroutine(ThrowItem(item));
     }
 }

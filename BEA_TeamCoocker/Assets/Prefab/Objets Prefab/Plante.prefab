@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1513206881490175698}
   - component: {fileID: 2824530701131346860}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,9 @@ GameObject:
   - component: {fileID: 8339610067282678191}
   - component: {fileID: 5708881221034397317}
   - component: {fileID: 1638579121612938124}
-  m_Layer: 0
+  - component: {fileID: -5522607553091541343}
+  - component: {fileID: -3107061095703568249}
+  m_Layer: 8
   m_Name: Plante
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,6 +181,46 @@ MonoBehaviour:
   objectData: {fileID: 11400000, guid: f472ab1407b935b49b74e7577da350b8, type: 2}
   spawnRadius: 10
   currentUsure: 0
+--- !u!50 &-5522607553091541343
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7793193561467946610}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &-3107061095703568249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7793193561467946610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56133b5743195fd4dba1c56d32764fc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectData: {fileID: 11400000, guid: f472ab1407b935b49b74e7577da350b8, type: 2}
 --- !u!1 &8018715176322131612
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +232,7 @@ GameObject:
   - component: {fileID: 4934129317486886102}
   - component: {fileID: 8238264866723768559}
   - component: {fileID: 771503736232112323}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
