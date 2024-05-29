@@ -20,14 +20,7 @@ public class GrabObject : MonoBehaviour
     {
         NOHOLDING,HOLDING,THROW
     }
-
-    public void Start()
-    {
-        
-    }
-
-   
-       
+    
     private void Update()
     {
         OnStateUpdate();
@@ -37,12 +30,11 @@ public class GrabObject : MonoBehaviour
         switch(currentStates)
         {
             case States.NOHOLDING:
-                
                 break;
-            case States.THROW:
-                
+            case States.THROW:               
                 break;
             case States.HOLDING:
+                
                 break;
         }
     }
@@ -51,14 +43,25 @@ public class GrabObject : MonoBehaviour
         switch (currentStates)
         {
             case States.NOHOLDING:
+
                 if (player.isGrabing)
                 {
-                   TransitionToState(States.HOLDING);
+                    Collider2D pickUpItem = Physics2D.OverlapCircle(transform.position + Direction, 0.4f, pickUP); 
+                    if (pickUpItem)
+                    {
+                        itemHolding = pickUpItem.gameObject;
+                        itemHolding.transform.position = objectGrabed.position;
+                        itemHolding.transform.parent = objectGrabed.transform;
+                        itemHolding.transform.localEulerAngles = objectGrabed.localEulerAngles;
+                        if (itemHolding.GetComponent<Rigidbody2D>())
+                            itemHolding.GetComponent<Rigidbody2D>().simulated = false;
+                        TransitionToState(States.HOLDING);
+                    }
+                   
                 }
 
                 break;
             case States.THROW: 
-               
 
                 if (itemHolding != null)
                 {
@@ -68,7 +71,6 @@ public class GrabObject : MonoBehaviour
                         itemHolding.GetComponent<Rigidbody2D>().simulated = true;
                     itemHolding = null;
                     itemThrow = false;
-                   
                 }
                
                 if (!player.isGrabing)
@@ -79,18 +81,6 @@ public class GrabObject : MonoBehaviour
                 break;
             case States.HOLDING:
 
-                Collider2D pickUpItem = Physics2D.OverlapCircle(transform.position + Direction, 0.4f, pickUP);
-
-                if (pickUpItem)
-                {
-                    itemHolding = pickUpItem.gameObject;
-                    itemHolding.transform.position = objectGrabed.position;
-                    itemHolding.transform.parent = objectGrabed.transform;
-                    itemHolding.transform.localEulerAngles = objectGrabed.localEulerAngles;
-                    if (itemHolding.GetComponent<Rigidbody2D>())
-                        itemHolding.GetComponent<Rigidbody2D>().simulated = false;
-                }
-                
                 if (!player.isGrabing)
                 {
                     TransitionToState(States.THROW);
@@ -141,7 +131,7 @@ public class GrabObject : MonoBehaviour
         {
            
             Vector2 curve = new Vector2(chrono / timer * objectData.throwDistance * item.transform.right.x, objectData.myCurve.Evaluate(chrono / timer));
-            Debug.Log(curve);
+            
             item.transform.position = startPosition + (Vector3)curve;
             yield return new WaitForEndOfFrame();          
             chrono += Time.deltaTime;

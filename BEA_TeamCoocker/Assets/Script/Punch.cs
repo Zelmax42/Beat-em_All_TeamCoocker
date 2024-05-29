@@ -4,28 +4,25 @@ using UnityEngine;
 
 public class Punch : MonoBehaviour
 {
-    public GameObject hurtbox;
-    public PlayerMovement player;
+    public Player playerData;
 
-    // Start is called before the first frame update
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 8 )
+        {
+            collision.GetComponent<Item>().Damaged();
+        }
+    }
+
     void Start()
     {
        
     }
 
-    // Update is called once per frame
+  
     void Update()
     {
 
     }
 
-    public void Activate()
-    {
-        hurtbox.SetActive(true);
-    }
-
-    public void Deactivate()
-    {
-        hurtbox.SetActive(false);
-    }
 }
