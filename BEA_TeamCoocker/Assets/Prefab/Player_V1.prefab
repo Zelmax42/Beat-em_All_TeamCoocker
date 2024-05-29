@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2326727724065033453}
   - component: {fileID: 3427908437102035533}
   - component: {fileID: 900670040024113256}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 7267208450573360432}
   - component: {fileID: 1204441884981584377}
   - component: {fileID: 7241131613517493940}
-  m_Layer: 6
+  m_Layer: 10
   m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6967689147756855}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: IsGrounded
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8992329046357984746}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Grab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7571391336082677087}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -458,7 +458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7243342218381966129}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: "CompSp\xE9"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 2833871222342791804}
   - component: {fileID: 3251578942538292677}
   - component: {fileID: 1965895130053647752}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -597,7 +597,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1866409363148632171}
   - component: {fileID: 5686677729125853549}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: HitBox_Attack
   m_TagString: PlayerHitBox
   m_Icon: {fileID: 0}
@@ -673,7 +673,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7543735213863850043}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -704,7 +704,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1757915836280813733}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player_V1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -740,7 +740,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5161594597351984806}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CameraAnchor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5481568670832672169}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ObjectGrabed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
