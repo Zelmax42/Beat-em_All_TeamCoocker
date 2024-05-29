@@ -257,6 +257,10 @@ public class PlayerMovement : MonoBehaviour
     public void GetLife(float value)
     {
         player.pvPlayer += value;
+        if(player.pvPlayer > GetComponent<PlayerHealth>()._PlayerHP) 
+        {
+            player.pvPlayer = GetComponent<PlayerHealth>()._PlayerHP;
+        }
     }
 
     public void Move(InputAction.CallbackContext context )

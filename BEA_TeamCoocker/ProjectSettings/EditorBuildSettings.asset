@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Simon.unity
     guid: 715b201d102150d4684c21b2225f2e05
+  - enabled: 1
+    path: Assets/Scenes/UI/UI_Game.unity
+    guid: 28fb82e9878c3ae44b778ab1ec631522
   m_configObjects: {}

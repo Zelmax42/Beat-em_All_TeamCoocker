@@ -50,6 +50,7 @@ public class GrabObject : MonoBehaviour
                     if (pickUpItem)
                     {
                         itemHolding = pickUpItem.gameObject;
+                        itemHolding.GetComponent<ObjectThrow>().Grabed();
                         itemHolding.transform.position = objectGrabed.position;
                         itemHolding.transform.parent = objectGrabed.transform;
                         itemHolding.transform.localEulerAngles = objectGrabed.localEulerAngles;
@@ -112,32 +113,6 @@ public class GrabObject : MonoBehaviour
         OnStateExit();
         currentStates = newState;
         OnStateEnter();
-    }
-    
-    IEnumerator ThrowItem(GameObject item)
-    {
-        
-        Vector3 startPosition = item.transform.position;
-       
-        float timer = objectData.travelDuration;
-        float chrono = 0f;
-
-        int step = 25;
-        float intervalMeter = objectData.throwDistance / step;
-        float intervalTime = 1f / step;
-
-
-        while (chrono / timer < 1f)
-        {
-           
-            Vector2 curve = new Vector2(chrono / timer * objectData.throwDistance * item.transform.right.x, objectData.myCurve.Evaluate(chrono / timer));
-            
-            item.transform.position = startPosition + (Vector3)curve;
-            yield return new WaitForEndOfFrame();          
-            chrono += Time.deltaTime;
-        }
-        itemHolding = null;
-        StopCoroutine(ThrowItem(item));
     }
 }
 
