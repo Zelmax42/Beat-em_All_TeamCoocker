@@ -13,7 +13,7 @@ public class ObjectThrow : MonoBehaviour
     }
     void Start()
     {
-        StopAllCoroutines();
+        
     }
 
     // Update is called once per frame

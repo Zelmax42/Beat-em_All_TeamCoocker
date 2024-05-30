@@ -5,10 +5,11 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    //variable pvPlayer
     public Player _player;
     private Image _image;
     private float _maxPV=50;
-    // Start is called before the first frame update
+
     void Start()
     {
         _image = GetComponent<Image>();
