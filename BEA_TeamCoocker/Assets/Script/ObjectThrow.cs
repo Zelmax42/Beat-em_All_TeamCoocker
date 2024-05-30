@@ -13,7 +13,7 @@ public class ObjectThrow : MonoBehaviour
     }
     void Start()
     {
-        
+        StopAllCoroutines();
     }
 
     // Update is called once per frame
@@ -45,5 +45,44 @@ public class ObjectThrow : MonoBehaviour
         }
         item.GetComponent<Item>().isThrow = false;
         StopCoroutine(ThrowItem(item));
+    }
+
+    IEnumerator Bonk(GameObject item)
+    {
+        item.GetComponent<Item>().isThrow = true;
+        Vector3 startPosition = item.transform.position;
+
+        float timer = objectData.travelDuration;
+        float chrono = 0f;
+
+        int step = 25;
+        float intervalMeter = objectData.bonkDistance / step;
+        float intervalTime = 1f / step;
+
+
+        while (chrono / timer < 1f)
+        {
+            
+            Vector2 curve = new Vector2(chrono / timer * objectData.bonkDistance * -item.transform.right.x, objectData.BonkCurve.Evaluate(chrono / timer));
+            item.transform.position = startPosition + (Vector3)curve;
+            Debug.Log(curve);
+            yield return new WaitForEndOfFrame();
+            chrono += Time.deltaTime;
+
+        }
+        item.GetComponent<Item>().isThrow = false;
+        StopCoroutine(ThrowItem(item));
+
+    }
+
+    public void Bonked() 
+    {
+        StopCoroutine(ThrowItem(this.gameObject));
+        StartCoroutine(Bonk(this.gameObject));
+    }
+
+    public void Grabed()
+    {
+        StopAllCoroutines();
     }
 }

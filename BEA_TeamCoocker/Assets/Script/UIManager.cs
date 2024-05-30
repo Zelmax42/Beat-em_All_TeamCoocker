@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SceneManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
     public Player _player;
     private Image _image;

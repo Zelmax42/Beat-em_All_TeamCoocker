@@ -6,6 +6,8 @@ using UnityEngine;
 public class ObjectData : ScriptableObject
 {
     public AnimationCurve myCurve;
+    public AnimationCurve BonkCurve;
+    public float bonkDistance;
     public float throwDistance;
     public float travelDuration;
     public enum ObjectType
