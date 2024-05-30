@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,7 +16,17 @@ public class Punch : MonoBehaviour
 
         if (collision.gameObject.layer == 7)
         {
-            collision.GetComponent<EnnemyMovement>().GotDamaged(playerData.dmgPlayer);
+            Debug.Log("je touche");
+            try
+            {
+               collision.GetComponent<EnnemyMovement>().GotDamaged(playerData.dmgPlayer);
+            }
+            catch(SystemException) { }
+            try
+            {
+                collision.GetComponent<BossV1>().GotDamaged(playerData.dmgPlayer);
+            }
+            catch (SystemException) { }
         }
     }
 
