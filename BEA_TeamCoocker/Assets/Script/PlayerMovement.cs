@@ -51,14 +51,12 @@ public class PlayerMovement : MonoBehaviour
             GrabObject.Direction = _direction.normalized;
         }
 
-        transform.localPosition = Vector3.zero;
-
         OnStateUpdate();
 
         //Detection de sol 
         Collider2D ground = Physics2D.OverlapBox(groundCheckerTransform.position, groundCheckerSize, 0f, groundLayer);
         
-        if (ground != null)
+        if (ground != null && player.currentStates != Player.States.JUMP)
         {
             player.isGrounded = true;
         }
@@ -66,10 +64,11 @@ public class PlayerMovement : MonoBehaviour
         {
            player.isGrounded = false;
         }
+
+
         if (player.pvPlayer <= 0)
         {
             _animator.SetFloat("Life", 0);
-
             TransitionToState(Player.States.HURT);
         }
     }
@@ -112,7 +111,6 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case Player.States.HURT:
                 _animator.SetTrigger("Hurted");
-
                 break;
             case Player.States.FALL:
                 _rb2d.gravityScale = 2f;
@@ -164,11 +162,12 @@ public class PlayerMovement : MonoBehaviour
                 
             case Player.States.JUMP:
 
+                Debug.Log(_rb2d.velocity);
                 transform.parent.Translate(moveSpeed * _direction * Time.deltaTime);
                 _animator.SetFloat("Speed", _direction.magnitude);
                 _animator.SetFloat("Jump", _rb2d.velocity.y);
 
-                if (_rb2d.velocity.y < 0f)
+                if (_rb2d.velocity.y <= 0f)
                     {
                         TransitionToState(Player.States.FALL);
                     }
@@ -255,6 +254,11 @@ public class PlayerMovement : MonoBehaviour
         OnStateEnter();
     }
 
+    public void GetLife(float value)
+    {
+        player.pvPlayer += value;
+    }
+
     public void Move(InputAction.CallbackContext context )
     {
         switch(context.phase)
@@ -321,7 +325,7 @@ public class PlayerMovement : MonoBehaviour
         {
             
             case InputActionPhase.Performed:
-                Debug.Log("je prend");
+                
                 player.isGrabing = true;
                 if(GrabObject.itemHolding != null)
                 {

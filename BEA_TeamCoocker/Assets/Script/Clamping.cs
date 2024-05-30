@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Camera : MonoBehaviour
+public class Clamping: MonoBehaviour
 { 
    
         public Transform target; 
@@ -11,21 +11,31 @@ public class Camera : MonoBehaviour
         public float minY; 
         public float maxY; 
         public float minX; 
-        public float maxX; 
+        public float maxX;
+        private float _width;
+        private Vector3 _clamp;
 
+        public void Start()
+         {
+            _width = Camera.main.pixelWidth * Camera.main.orthographicSize / Camera.main.pixelHeight;
+            _clamp = new Vector3(_width, -Camera.main.pixelHeight, Camera.main.pixelHeight - maxY);
+         }
         void LateUpdate()
         {
             
-            Vector3 desiredPosition = target.position + offset;
+                /*Vector3 desiredPosition = target.position + offset;
 
             
-            desiredPosition.y = Mathf.Clamp(desiredPosition.y, minY, maxY);
-            desiredPosition.x = Mathf.Clamp(desiredPosition.x, minX, maxX);
+                desiredPosition.y = Mathf.Clamp(desiredPosition.y, minY, maxY);
+                desiredPosition.x = Mathf.Clamp(desiredPosition.x, minX, maxX);
 
             
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-            transform.position = smoothedPosition;
+                Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+                transform.position = smoothedPosition; 
+                */
+               
         }
+
 
         void OnDrawGizmos()
         {
@@ -48,6 +58,3 @@ public class Camera : MonoBehaviour
             obj.position = pos;
         }
 }
-
-
-//cameraFollow.ConstrainObjectWithinView(thrownObject.transform);

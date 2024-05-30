@@ -62,7 +62,7 @@ public class EnnemyMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb2d.velocity = _moveDirection.normalized * _currentSpeed;
+        //_rb2d.velocity = _moveDirection.normalized * _currentSpeed;
     }
 
     #endregion
@@ -106,10 +106,12 @@ public class EnnemyMovement : MonoBehaviour
     }
     public void OnStateUpdate()
     {
+
+
         if (chrono >=2f)
         {
             RandomStates();
-            chrono = 0;
+            chrono = 0f;
         }
         else
         {
@@ -125,10 +127,12 @@ public class EnnemyMovement : MonoBehaviour
         switch (_CurrentState)
         {
             case States.IDLE:
-
+                PlayerDetection();
                 break;
             case States.WALK:
+                PlayerDetection();
 
+                transform.parent.Translate(_currentSpeed * _moveDirection * Time.deltaTime);
                 break;
             case States.PUNCH:
                 break;
@@ -178,8 +182,8 @@ public class EnnemyMovement : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("player detecté");
         TransitionToState(States.PUNCH);
-
     }
 
     public void RandomStates()
@@ -205,10 +209,11 @@ public class EnnemyMovement : MonoBehaviour
                 TransitionToState(States.WALK);
                 break;
             case 2:
-
+                Debug.Log(_currentSpeed);
                 if (_target != null) // Si il y a une cible (Player), on le vise
                 {
                     _moveDirection = _target.position - transform.position;
+                    _moveDirection.Normalize();
                 }
 
                 if (_moveDirection.x < 0)
@@ -234,11 +239,42 @@ public class EnnemyMovement : MonoBehaviour
     {
         if (GameObject.FindGameObjectWithTag("PlayerHitBox"))
         {
-            Debug.Log("mob touché");
             _nbPV -= _player.dmgPlayer;
         }
 
     }
+    private void OnDrawGizmos()
+    {
+        if (_moveDirection.x > 0f)
+        {
+            Gizmos.DrawCube(transform.position - new Vector3(-1f, -0.5f, 0f), new Vector2(1.5f, 1.5f));
+        }
+        else
+        {
+             Gizmos.DrawCube(transform.position - new Vector3(1f, -0.5f, 0f), new Vector2(1.5f, 1.5f));
+        }
+    }
 
+    public void PlayerDetection()
+    {
+        if (_moveDirection.x > 0f)
+        {
+           Collider2D DetectionBox = Physics2D.OverlapBox(transform.position - new Vector3(-1f, -0.5f, 0f), new Vector2(1.5f, 1.5f), 0f, LayerMask.GetMask("Player"));
+            if (DetectionBox != null)
+            {
+                Debug.Log("player detecté");
+                TransitionToState(States.PUNCH);
+            }
+        }
+        else
+        {
+            Collider2D DetectionBox = Physics2D.OverlapBox(transform.position - new Vector3(1f, -0.5f, 0f), new Vector2(1.5f, 1.5f), 0f, LayerMask.GetMask("Player"));
+            if (DetectionBox != null)
+            {
+                Debug.Log("player detecté");
+                TransitionToState(States.PUNCH);
+            }
+        }
+    }
     #endregion
 }

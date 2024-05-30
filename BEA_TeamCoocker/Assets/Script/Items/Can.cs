@@ -13,13 +13,15 @@ public class Can : MonoBehaviour
  
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Player player = GetComponent<Player>();
+        Debug.Log(collider.gameObject.GetComponent<PlayerMovement>());
+
+        PlayerMovement player = collider.gameObject.GetComponent<PlayerMovement>();
         if (player != null)
         {
             switch (canData.can)
             {
                 case CanType.Life:
-                //player.life += canData.value;
+                    player.GetLife(canData.value);
                     break;
                 case CanType.Energy:
                 //player.energy += canData.value;
