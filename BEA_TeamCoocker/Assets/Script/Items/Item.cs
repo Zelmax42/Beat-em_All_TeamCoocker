@@ -25,6 +25,8 @@ public class Item : MonoBehaviour
             Debug.Log("touché");
             collision.gameObject.GetComponent<EnnemyMovement>().GotDamaged(objectData.damage);
             Damaged();
+            GetComponent<ObjectThrow>().Bonked();
+           
         }
 
     }

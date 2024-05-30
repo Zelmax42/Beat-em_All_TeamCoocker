@@ -12,6 +12,11 @@ public class Punch : MonoBehaviour
         {
             collision.GetComponent<Item>().Damaged();
         }
+
+        if (collision.gameObject.layer == 7)
+        {
+            collision.GetComponent<EnnemyMovement>().GotDamaged(playerData.dmgPlayer);
+        }
     }
 
     void Start()

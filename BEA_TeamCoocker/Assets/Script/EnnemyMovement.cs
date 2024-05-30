@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class EnnemyMovement : MonoBehaviour
@@ -14,6 +15,7 @@ public class EnnemyMovement : MonoBehaviour
     private bool _isHurted = false;
     private float chrono = 0f;
     public Animator _animator;
+    private bool _isPunching;
 
     public EnnemyInit mobInit;
     public Player _player;
@@ -51,13 +53,6 @@ public class EnnemyMovement : MonoBehaviour
     void Update()
     {
         OnStateUpdate();
-
-        if (_nbPV <= 0f)
-        {
-            _isDefeated = false;
-            _animator.SetFloat("Life", 0f);
-            TransitionToState(States.HURTED);
-        }
     }
 
     private void FixedUpdate()
@@ -83,22 +78,21 @@ public class EnnemyMovement : MonoBehaviour
                 _animator.SetFloat("Velocity", 1f);
                 break;
             case States.PUNCH:
+                
                 _currentSpeed = 0f;
                 _animator.SetTrigger("Attack");
-                _player.pvPlayer -= _damage;
                 break;
             case States.HURTED:
                 _currentSpeed = 0f;
+                _animator.SetFloat("Life", _nbPV);
                 _animator.SetTrigger("Hurted");
-
-
-                _isHurted = false;
-
+                Debug.Log("pvScrpit " +  _nbPV);
+                Debug.Log("pvAnimator : " + _animator.GetFloat("Life"));
                 break;
             case States.DEAD:
                 _currentSpeed = 0f;
                 
-                gameObject.SetActive(false);
+                transform.parent.gameObject.SetActive(false);
                 break;
             default:
                 break;
@@ -118,10 +112,18 @@ public class EnnemyMovement : MonoBehaviour
             chrono += Time.deltaTime;
         }
 
+        if (_isPunching)
+        {
+            TransitionToState(States.PUNCH);    
+        }
 
-        if (_isHurted)
+        if (_isHurted && _CurrentState != States.HURTED)
         {
             TransitionToState(States.HURTED);
+        } 
+        if (_isDefeated)
+        {    
+            TransitionToState(States.DEAD);
         }
 
         switch (_CurrentState)
@@ -137,11 +139,8 @@ public class EnnemyMovement : MonoBehaviour
             case States.PUNCH:
                 break;
             case States.HURTED:
-
-                if (_isDefeated)
-                {
-                    TransitionToState(States.DEAD);
-                }
+                
+               
                 break;
             case States.DEAD:
                 break;
@@ -159,8 +158,10 @@ public class EnnemyMovement : MonoBehaviour
             case States.WALK:
                 break;
             case States.PUNCH:
+                _isPunching = false;
                 break;
             case States.HURTED:
+                _isHurted = false;
                 break;
             case States.DEAD:
                 break;
@@ -179,12 +180,6 @@ public class EnnemyMovement : MonoBehaviour
     #endregion
 
     #region Methods
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("player detecté");
-        TransitionToState(States.PUNCH);
-    }
 
     public void RandomStates()
     {
@@ -235,14 +230,6 @@ public class EnnemyMovement : MonoBehaviour
         _isHurted = true;
     }
 
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (GameObject.FindGameObjectWithTag("PlayerHitBox"))
-        {
-            _nbPV -= _player.dmgPlayer;
-        }
-
-    }
     private void OnDrawGizmos()
     {
         if (_moveDirection.x > 0f)
@@ -257,24 +244,33 @@ public class EnnemyMovement : MonoBehaviour
 
     public void PlayerDetection()
     {
-        if (_moveDirection.x > 0f)
+        if (!_isHurted) 
         {
-           Collider2D DetectionBox = Physics2D.OverlapBox(transform.position - new Vector3(-1f, -0.5f, 0f), new Vector2(1.5f, 1.5f), 0f, LayerMask.GetMask("Player"));
-            if (DetectionBox != null)
+            if (_moveDirection.x > 0f)
             {
-                Debug.Log("player detecté");
-                TransitionToState(States.PUNCH);
+               Collider2D DetectionBox = Physics2D.OverlapBox(transform.position - new Vector3(-1f, -0.5f, 0f), new Vector2(1.5f, 1.5f), 0f, LayerMask.GetMask("Player"));
+                if (DetectionBox != null)
+                {
+                    _isPunching = true;
+                }
+            }
+            else
+            {
+                Collider2D DetectionBox = Physics2D.OverlapBox(transform.position - new Vector3(1f, -0.5f, 0f), new Vector2(1.5f, 1.5f), 0f, LayerMask.GetMask("Player"));
+                if (DetectionBox != null)
+                {
+                    _isPunching = true;
+                }
             }
         }
-        else
-        {
-            Collider2D DetectionBox = Physics2D.OverlapBox(transform.position - new Vector3(1f, -0.5f, 0f), new Vector2(1.5f, 1.5f), 0f, LayerMask.GetMask("Player"));
-            if (DetectionBox != null)
-            {
-                Debug.Log("player detecté");
-                TransitionToState(States.PUNCH);
-            }
-        }
+
+       
+        
+    }
+
+    public void Defeated()
+    {
+        _isDefeated = true;
     }
     #endregion
 }
