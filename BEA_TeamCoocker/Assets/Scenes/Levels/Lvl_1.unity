@@ -1035,6 +1035,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3026215573661494745, guid: 86c7ec3b1e83df143846348a993a4d40, type: 3}
+      propertyPath: comboScore.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026215573661494745, guid: 86c7ec3b1e83df143846348a993a4d40, type: 3}
+      propertyPath: comboScore.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026215573661494745, guid: 86c7ec3b1e83df143846348a993a4d40, type: 3}
+      propertyPath: comboScore.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11400000, guid: 23fd1916031709f46848da6735601814, type: 2}
+    - target: {fileID: 3026215573661494745, guid: 86c7ec3b1e83df143846348a993a4d40, type: 3}
+      propertyPath: comboScore.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026215573661494745, guid: 86c7ec3b1e83df143846348a993a4d40, type: 3}
+      propertyPath: comboScore.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: HitEnnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026215573661494745, guid: 86c7ec3b1e83df143846348a993a4d40, type: 3}
+      propertyPath: comboScore.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManagerSO, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026215573661494745, guid: 86c7ec3b1e83df143846348a993a4d40, type: 3}
+      propertyPath: comboScore.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3026215573661494745, guid: 86c7ec3b1e83df143846348a993a4d40, type: 3}
+      propertyPath: comboScore.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8321070361714865262, guid: 86c7ec3b1e83df143846348a993a4d40, type: 3}
       propertyPath: m_Name
       value: Player_V1

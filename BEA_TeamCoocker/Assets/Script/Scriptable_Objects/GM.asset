@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 654d1491dad30214a9935bd579f0ad53, type: 3}
   m_Name: GM
   m_EditorClassIdentifier: 
-  levelChanger: {fileID: 0}
   score: 0
   hitEnnemy: 0
   stateStars: 0
