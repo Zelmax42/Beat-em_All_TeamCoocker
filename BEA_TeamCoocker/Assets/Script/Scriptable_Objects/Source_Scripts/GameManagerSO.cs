@@ -24,12 +24,16 @@ public class GameManagerSO : ScriptableObject
    
     public void CheckGameOver()
     {
+        hitEnnemy = 0;
+        stateStars = 0;
         //levelChanger.FadeToNextLevel();
         SceneManager.LoadScene("UI_GameOver");
     }
 
     public void CheckWin()
     {
+        hitEnnemy = 0;
+        stateStars = 0;
         SceneManager.LoadScene("UI_Win");
     }
     public void HitEnnemy(int value)
