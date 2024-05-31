@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject punch;
 
     private Animator _animator;
+    public Clamping clamp; 
    
     void Start()
     {
@@ -43,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
         GrabObject.Direction = _direction;
         
         _animator = gameObject.GetComponentInChildren<Animator>();
+
+        clamp = Camera.main.GetComponent<Clamping>();
     }
 
     // Update is called once per frame
@@ -148,6 +151,7 @@ public class PlayerMovement : MonoBehaviour
             case Player.States.WALK:
 
                 transform.parent.Translate(moveSpeed * _direction * Time.deltaTime);
+                clamp.ClampPosition(transform.parent);
                 _animator.SetFloat("Speed", _direction.magnitude);
 
                 if ( _direction.magnitude == 0f )
@@ -166,8 +170,9 @@ public class PlayerMovement : MonoBehaviour
                 
             case Player.States.JUMP:
 
-                Debug.Log(_rb2d.velocity);
+                
                 transform.parent.Translate(moveSpeed * _direction * Time.deltaTime);
+                clamp.ClampPosition(transform.parent);
                 _animator.SetFloat("Speed", _direction.magnitude);
                 _animator.SetFloat("Jump", _rb2d.velocity.y);
 
@@ -181,6 +186,7 @@ public class PlayerMovement : MonoBehaviour
             case Player.States.FALL:
 
                 transform.parent.Translate(moveSpeed * _direction * Time.deltaTime);
+                clamp.ClampPosition(transform.parent);
                 _animator.SetFloat("Speed", _direction.magnitude);
                 _animator.SetFloat("Jump", _rb2d.velocity.y);
 

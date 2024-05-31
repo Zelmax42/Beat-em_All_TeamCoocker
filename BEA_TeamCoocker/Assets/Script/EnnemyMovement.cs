@@ -1,6 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+<<<<<<< HEAD
+=======
+using System.Runtime;
+using JetBrains.Annotations;
+>>>>>>> 52295f4153f919ff06c41ea96c0ce1074ba92027
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.InputSystem.Controls.AxisControl;
 
 public class EnnemyMovement : MonoBehaviour
 {
@@ -24,6 +31,11 @@ public class EnnemyMovement : MonoBehaviour
     public float _movespeed = 5f;
     private float _currentSpeed;
     public States _CurrentState= States.IDLE;
+
+    [Tooltip("x:limite gauche, y:limite droite, z:limite bas, w:limite haut ")]
+    public Vector4 clampBoundaries;
+
+
 
     public enum States
     {
@@ -134,6 +146,7 @@ public class EnnemyMovement : MonoBehaviour
                 PlayerDetection();
 
                 transform.parent.Translate(_currentSpeed * _moveDirection * Time.deltaTime);
+                ClampMouvement(transform.parent);
                 break;
             case States.PUNCH:
                 break;
@@ -266,7 +279,13 @@ public class EnnemyMovement : MonoBehaviour
        
         
     }
-
+    public void ClampMouvement(Transform pos)
+    {
+        Vector2 newPosition = new Vector2();
+        newPosition.x = Mathf.Clamp(pos.position.x, clampBoundaries.x, clampBoundaries.y);
+        newPosition.y = Mathf.Clamp(pos.position.y, clampBoundaries.z, clampBoundaries.w);
+        pos.position = newPosition;
+    }
     public void Defeated()
     {
         _isDefeated = true;
