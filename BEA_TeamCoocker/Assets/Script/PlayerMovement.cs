@@ -45,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
         _animator = gameObject.GetComponentInChildren<Animator>();
 
         _clamp = Camera.main.GetComponent<Clamping>();
+
+        player.currentStates = Player.States.IDLE;
     }
 
     // Update is called once per frame

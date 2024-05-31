@@ -83,7 +83,7 @@ MonoBehaviour:
   travelDuration: 1
   type: 1
   usure: 2
-  damage: 2
+  damage: 5
   canDrop: 0
   lootTable:
   - {fileID: 124921360077398183, guid: 20767c50bc1252e4eabfca1001c31ceb, type: 3}

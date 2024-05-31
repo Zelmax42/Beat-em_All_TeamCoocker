@@ -683,7 +683,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Keyboard\n\nMove : ZQSD\n\nJump : Spacebar \n\nAttack : LeftClick\n\n
-    Grag/Throw : Right Click"
+    Grab/Throw : Right Click"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 1112598329}
   - component: {fileID: 1112598328}
   m_Layer: 5
-  m_Name: GamepadText
+  m_Name: GamecontrollerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -817,7 +817,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Gamepad\n\nMove : LeftStick \n\nJump : A/Croix \n\nAttack : X/Carr\xE9
+  m_text: "GameController\n\nMove : LeftStick \n\nJump : A/Croix \n\nAttack : X/Carr\xE9
     \n\nGrab/Throw : RT "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

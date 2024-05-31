@@ -29,6 +29,8 @@ public class BossV1 : MonoBehaviour
     public Clamping _clamp;
     public States _currentState = States.IDLE;
 
+    public AudioSource hurtSFX;
+
     public enum States
     {
         IDLE, MOVE, HURT, DEAD, DASH
@@ -239,6 +241,7 @@ public class BossV1 : MonoBehaviour
     public void GotDamaged(float value)
     {
         boss.bossHP -= value;
+        hurtSFX.Play();
     }
     public void OnEnable()
     {

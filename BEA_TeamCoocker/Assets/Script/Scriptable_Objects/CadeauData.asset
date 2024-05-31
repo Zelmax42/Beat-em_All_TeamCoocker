@@ -82,7 +82,7 @@ MonoBehaviour:
   throwDistance: 4
   travelDuration: 1
   type: 0
-  usure: 2
+  usure: 1
   damage: 1
   canDrop: 0
   lootTable:

@@ -83,7 +83,7 @@ MonoBehaviour:
   travelDuration: 1
   type: 0
   usure: 2
-  damage: 2
+  damage: 5
   canDrop: 0
   lootTable: []
   _gravity: 0
