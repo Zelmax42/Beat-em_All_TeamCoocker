@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime;
-using JetBrains.Annotations;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
-using static UnityEngine.InputSystem.Controls.AxisControl;
 
 public class EnnemyMovement : MonoBehaviour
 {
@@ -126,7 +122,7 @@ public class EnnemyMovement : MonoBehaviour
             TransitionToState(States.HURTED);
         } 
         if (_isDefeated)
-        {    
+        {
             TransitionToState(States.DEAD);
         }
 

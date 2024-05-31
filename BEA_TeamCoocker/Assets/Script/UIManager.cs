@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    //variable pvPlayer
     public Player _player;
     public Boss boss;
     public Image _PlayerPVimage;
     private float _maxPV=50;
+
+
+
     public Image bossJaugeImage;
     // Start is called before the first frame update
+
     void Start()
     {
 
