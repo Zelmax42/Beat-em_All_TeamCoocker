@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class BossArea : MonoBehaviour
 {
-    public Player _player;
-    public float _PlayerHP = 50;
-
+    public BossV1 Boss;
     // Start is called before the first frame update
     void Start()
     {
-        _player.pvPlayer = 50;
-        _player.currentStates = Player.States.IDLE;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        Boss._moveDirection *= -1f;
+        Debug.Log("je sors");
+    }
 }

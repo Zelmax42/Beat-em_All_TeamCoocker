@@ -9,16 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b59bb9c9c9fa3247898eb91d137cdf6, type: 3}
-  m_Name: PlayerSO
+  m_Script: {fileID: 11500000, guid: ed071bd85797a414fab7d7bcab07f6f1, type: 3}
+  m_Name: BossSO
   m_EditorClassIdentifier: 
-  pvPlayer: 47.7
-  dmgPlayer: 3
-  staminaPlayer: 5
-  speedPlayer: 5
-  jumpStrengthPlayer: 5
-  comboPlayer: 5
-  punchComboPLayer: 5
-  isGrabing: 0
-  isGrounded: 0
-  currentStates: 0
+  bossHP: 48.6
+  dashDamage: 2.5
+  laserDamage: 15
+  moveSpeed: 2
+  dashSpeed: 2
+  isActive: 1

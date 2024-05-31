@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,8 +17,19 @@ public class Punch : MonoBehaviour
 
         if (collision.gameObject.layer == 7)
         {
-            collision.GetComponent<EnnemyMovement>().GotDamaged(playerData.dmgPlayer);
             comboScore.Invoke();
+           
+            try
+            {
+               collision.GetComponent<EnnemyMovement>().GotDamaged(playerData.dmgPlayer);
+            }
+            catch(SystemException) { }
+            try
+            {
+                collision.GetComponent<BossV1>().GotDamaged(playerData.dmgPlayer);
+            }
+            catch (SystemException) { }
+
         }
     }
 

@@ -7,6 +7,9 @@ TagManager:
   - Box
   - Ennemi
   - PlayerHitBox
+  - ViseeLaser
+  - Canon
+  - BossHitBox
   layers:
   - Default
   - TransparentFX
@@ -19,7 +22,7 @@ TagManager:
   - PickUp
   - PlayerHitBox
   - Player
-  - 
+  - BossArea
   - 
   - 
   - 
