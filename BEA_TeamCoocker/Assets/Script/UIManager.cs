@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     public Boss boss;
     public Image _PlayerPVimage;
     private float _maxPV=50;
+    private float _maxBossHP = 30;
 
 
 
@@ -43,7 +44,7 @@ public class UIManager : MonoBehaviour
         if(boss.isActive)
         {
             bossJaugeImage.gameObject.SetActive(true);
-            bossJaugeImage.fillAmount = boss.bossHP / _maxPV;           
+            bossJaugeImage.fillAmount = boss.bossHP / _maxBossHP;           
         }
         else
         {

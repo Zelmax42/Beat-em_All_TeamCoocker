@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class GameManagerSO : ScriptableObject
 {
-    public LevelChanger levelChanger;
     public int score = 0;
     public int hitEnnemy = 0;
     public int stateStars = 0;
@@ -31,7 +30,7 @@ public class GameManagerSO : ScriptableObject
 
     public void CheckWin()
     {
-        SceneManager.LoadScene("");
+        SceneManager.LoadScene("UI_Win");
     }
     public void HitEnnemy(int value)
     {

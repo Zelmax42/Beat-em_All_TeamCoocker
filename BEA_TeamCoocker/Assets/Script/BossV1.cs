@@ -8,6 +8,7 @@ public class BossV1 : MonoBehaviour
     #region Variables
 
     public Boss boss;
+    public GameManagerSO win;
 
     [Header("Mouvement")]
     public Vector2 _moveDirection;
@@ -44,12 +45,19 @@ public class BossV1 : MonoBehaviour
         _bossHitBox = GameObject.FindGameObjectWithTag("BossHitBox");
         _bossHitBox.SetActive(false);
         _clamp = Camera.main.GetComponent<Clamping>();
+        boss.isActive = false;
+        boss.bossHP = 30;
     }
 
     void Update()
     {
         OnStateUpdate();
         BossRotate();
+
+        if(boss.bossHP <= 0)
+        {
+            win.CheckWin();
+        }
     }
 
     public void OnstateEnter()

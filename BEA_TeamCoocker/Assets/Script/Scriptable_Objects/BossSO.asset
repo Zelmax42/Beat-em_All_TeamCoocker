@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed071bd85797a414fab7d7bcab07f6f1, type: 3}
   m_Name: BossSO
   m_EditorClassIdentifier: 
-  bossHP: 48.6
+  bossHP: -1
   dashDamage: 2.5
   laserDamage: 15
   moveSpeed: 2

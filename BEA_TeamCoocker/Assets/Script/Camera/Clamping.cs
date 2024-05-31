@@ -23,6 +23,7 @@ public class Clamping: MonoBehaviour
         {
         _width = Camera.main.pixelWidth * Camera.main.orthographicSize / Camera.main.pixelHeight;
         _clamp = new Vector4(-_width,_width, -Camera.main.orthographicSize, Camera.main.orthographicSize - maxY);
+        isTracking = true;
         }
     void LateUpdate()
     {
@@ -38,9 +39,13 @@ public class Clamping: MonoBehaviour
         */
         _clamp = new Vector4(-_width + transform.position.x, _width + transform.position.x, -Camera.main.orthographicSize, Camera.main.orthographicSize - maxY) ;
 
-        Vector3 newpos = new Vector3(0, target.position.y, -10) ;
-        newpos.x = Mathf.Clamp(target.position.x, boundaries.x, boundaries.y);
-        transform.position = newpos;
+        if (isTracking)
+        {
+            Vector3 newpos = new Vector3(0, target.position.y, -10);
+            newpos.x = Mathf.Clamp(target.position.x, boundaries.x, boundaries.y);
+            transform.position = newpos;
+        }
+            
     }
     public void ClampPosition (Transform pos)
     {

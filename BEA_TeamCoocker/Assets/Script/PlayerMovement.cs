@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Events;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -11,7 +10,6 @@ public class PlayerMovement : MonoBehaviour
     public GrabObject GrabObject;
     public Rigidbody2D _rb2d;
     public SpriteRenderer image;
-    public UnityEvent GameOver = new UnityEvent();
 
     [Header("Speed")]
     public float moveSpeed = 5f;
@@ -76,7 +74,6 @@ public class PlayerMovement : MonoBehaviour
         {
             _animator.SetFloat("Life", 0);
             TransitionToState(Player.States.HURT);
-            GameOver.Invoke();
         }
     }
 
