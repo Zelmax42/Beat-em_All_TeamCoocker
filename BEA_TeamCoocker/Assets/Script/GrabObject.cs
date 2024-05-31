@@ -50,6 +50,7 @@ public class GrabObject : MonoBehaviour
                     if (pickUpItem)
                     {
                         itemHolding = pickUpItem.gameObject;
+                        itemHolding.GetComponent<Item>().isPickUp = true;
                         itemHolding.GetComponent<ObjectThrow>().Grabed();
                         itemHolding.transform.position = objectGrabed.position;
                         itemHolding.transform.parent = objectGrabed.transform;
@@ -67,6 +68,7 @@ public class GrabObject : MonoBehaviour
                 if (itemHolding != null)
                 {
                     itemHolding.transform.parent = null;
+                    itemHolding.GetComponent<Item>().isPickUp = false;
                     itemHolding.GetComponent<ObjectThrow>().ThrowObject();
                     if (itemHolding.GetComponent<Rigidbody2D>())
                         itemHolding.GetComponent<Rigidbody2D>().simulated = true;
