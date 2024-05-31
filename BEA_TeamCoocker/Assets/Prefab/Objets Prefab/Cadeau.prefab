@@ -197,7 +197,7 @@ Transform:
   m_GameObject: {fileID: 9048561824499138150}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.08, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -220,6 +220,7 @@ MonoBehaviour:
   objectData: {fileID: 11400000, guid: c77857f2473d9494ca387b4e60e61484, type: 2}
   spawnRadius: 10
   currentUsure: 0
+  isThrow: 0
 --- !u!61 &2840070939054825401
 BoxCollider2D:
   m_ObjectHideFlags: 0

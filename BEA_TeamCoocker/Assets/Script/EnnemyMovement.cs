@@ -1,10 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime;
-using JetBrains.Annotations;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
-using static UnityEngine.InputSystem.Controls.AxisControl;
 
 public class EnnemyMovement : MonoBehaviour
 {
@@ -94,8 +90,6 @@ public class EnnemyMovement : MonoBehaviour
                 _currentSpeed = 0f;
                 _animator.SetFloat("Life", _nbPV);
                 _animator.SetTrigger("Hurted");
-                Debug.Log("pvScrpit " +  _nbPV);
-                Debug.Log("pvAnimator : " + _animator.GetFloat("Life"));
                 break;
             case States.DEAD:
                 _currentSpeed = 0f;
@@ -108,8 +102,6 @@ public class EnnemyMovement : MonoBehaviour
     }
     public void OnStateUpdate()
     {
-
-
         if (chrono >=2f)
         {
             RandomStates();
@@ -130,7 +122,7 @@ public class EnnemyMovement : MonoBehaviour
             TransitionToState(States.HURTED);
         } 
         if (_isDefeated)
-        {    
+        {
             TransitionToState(States.DEAD);
         }
 
@@ -213,7 +205,6 @@ public class EnnemyMovement : MonoBehaviour
                 TransitionToState(States.WALK);
                 break;
             case 2:
-                Debug.Log(_currentSpeed);
                 if (_target != null) // Si il y a une cible (Player), on le vise
                 {
                     _moveDirection = _target.position - transform.position;

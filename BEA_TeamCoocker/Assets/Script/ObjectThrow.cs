@@ -13,7 +13,7 @@ public class ObjectThrow : MonoBehaviour
     }
     void Start()
     {
-        StopAllCoroutines();
+        
     }
 
     // Update is called once per frame
@@ -65,7 +65,6 @@ public class ObjectThrow : MonoBehaviour
             
             Vector2 curve = new Vector2(chrono / timer * objectData.bonkDistance * -item.transform.right.x, objectData.BonkCurve.Evaluate(chrono / timer));
             item.transform.position = startPosition + (Vector3)curve;
-            Debug.Log(curve);
             yield return new WaitForEndOfFrame();
             chrono += Time.deltaTime;
 

@@ -5,10 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Simon.unity
     guid: 715b201d102150d4684c21b2225f2e05
   - enabled: 1
+    path: Assets/Scenes/Levels/Lvl_1.unity
+    guid: 78ed8042226a11a46b047864e2da7b44
+  - enabled: 1
     path: Assets/Scenes/UI/UI_Game.unity
     guid: 28fb82e9878c3ae44b778ab1ec631522
+  - enabled: 1
+    path: Assets/Scenes/UI/UI_GameOver.unity
+    guid: cd3e493814ee54740b3e0c03a17c78d6
+  - enabled: 1
+    path: Assets/Scenes/UI/UI_Win.unity
+    guid: db4e2525c83a818408cbcd3d60300b13
   m_configObjects: {}
