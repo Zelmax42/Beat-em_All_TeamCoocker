@@ -38,14 +38,19 @@ public class Clamping: MonoBehaviour
         transform.position = smoothedPosition; 
         */
         _clamp = new Vector4(-_width + transform.position.x, _width + transform.position.x, -Camera.main.orthographicSize, Camera.main.orthographicSize - maxY) ;
-
+        
         if (isTracking)
         {
             Vector3 newpos = new Vector3(0, target.position.y, -10);
             newpos.x = Mathf.Clamp(target.position.x, boundaries.x, boundaries.y);
             transform.position = newpos;
-        }
-            
+
+        } 
+    }
+
+    public void SwitchMode()
+    {
+        isTracking = !isTracking; 
     }
     public void ClampPosition (Transform pos)
     {

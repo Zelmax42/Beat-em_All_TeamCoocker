@@ -34,7 +34,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject punch;
 
     private Animator _animator;
-    private Clamping _clamp; 
+    private Clamping _clamp;
+    public AudioSource healsfx;
    
     void Start()
     {
@@ -264,6 +265,7 @@ public class PlayerMovement : MonoBehaviour
     public void GetLife(float value)
     {
         player.pvPlayer += value;
+        healsfx.Play();
         if(player.pvPlayer > GetComponent<PlayerHealth>()._PlayerHP) 
         {
             player.pvPlayer = GetComponent<PlayerHealth>()._PlayerHP;

@@ -6,18 +6,20 @@ using UnityEngine.Events;
 
 public class Punch : MonoBehaviour
 {
-    public Player playerData;
-    public UnityEvent comboScore = new UnityEvent();
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == 8 )
+
+        public Player playerData;
+        public AudioSource audioSource; 
+
+        private void Start()
+
         {
-            collision.GetComponent<Item>().Damaged();
+            audioSource = GetComponent<AudioSource>();
         }
 
-        if (collision.gameObject.layer == 7)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            comboScore.Invoke();
+
+          
            
             try
             {
@@ -30,15 +32,17 @@ public class Punch : MonoBehaviour
             }
             catch (SystemException) { }
 
+
         }
-    }
 
-    void Start()
-    {
-       
-    }
+        private void PlayPunchSound()
+        {
+            if (audioSource != null && audioSource.clip != null)
+            {
+                audioSource.Play();
+            }
+        }
 
-  
     void Update()
     {
 
