@@ -45,22 +45,12 @@ public class Clamping: MonoBehaviour
             newpos.x = Mathf.Clamp(target.position.x, boundaries.x, boundaries.y);
             transform.position = newpos;
 
-<<<<<<< HEAD
         } 
     }
 
     public void SwitchMode()
     {
         isTracking = !isTracking; 
-=======
-        if (isTracking)
-        {
-            Vector3 newpos = new Vector3(0, target.position.y, -10);
-            newpos.x = Mathf.Clamp(target.position.x, boundaries.x, boundaries.y);
-            transform.position = newpos;
-        }
-            
->>>>>>> 4de39ad4a1b4d630251778e250bbed301c7811c0
     }
     public void ClampPosition (Transform pos)
     {
