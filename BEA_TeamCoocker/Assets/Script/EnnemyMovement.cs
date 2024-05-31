@@ -27,7 +27,7 @@ public class EnnemyMovement : MonoBehaviour
 
     [Tooltip("x:limite gauche, y:limite droite, z:limite bas, w:limite haut ")]
     public Vector4 clampBoundaries;
-
+    public AudioSource hurtsfx;
 
 
     public enum States
@@ -228,6 +228,7 @@ public class EnnemyMovement : MonoBehaviour
     {
         _nbPV -= damage;
         _isHurted = true;
+        hurtsfx.Play();
     }
 
     private void OnDrawGizmos()
