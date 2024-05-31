@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -71,7 +71,7 @@ TextureImporter:
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: -1
+    textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -108,7 +108,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: barrecomboV2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 138.2
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eecffca53f01cb643981a8fc0314c267
+      internalID: -1549403846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barrecomboV2_1
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 0
+        width: 138.2
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 176ec802288bdb744a360ca42f38dd2d
+      internalID: -118517799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barrecomboV2_2
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 0
+        width: 138.2
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edb6836a824e5b24c839b3eca41447f6
+      internalID: 1239868184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barrecomboV2_3
+      rect:
+        serializedVersion: 2
+        x: 414
+        y: 0
+        width: 138.2
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f80e15c4bac83f48bf48c1aa54691f6
+      internalID: 559487445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: barrecomboV2_4
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 0
+        width: 138.2
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90f979f51c8912a4399a432a31af19ce
+      internalID: -992044968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -119,7 +224,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      barrecomboV2_0: -1549403846
+      barrecomboV2_1: -118517799
+      barrecomboV2_2: 1239868184
+      barrecomboV2_3: 559487445
+      barrecomboV2_4: -992044968
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
