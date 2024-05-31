@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GrabObject : MonoBehaviour
 {
+    private Animator _animatorPlayer;
     public ObjectData objectData;
     public Player player;
     public Transform objectGrabed;
@@ -20,7 +21,11 @@ public class GrabObject : MonoBehaviour
     {
         NOHOLDING,HOLDING,THROW
     }
-    
+    public void Start()
+    {
+        _animatorPlayer = GetComponentInChildren<Animator>();
+    }
+
     private void Update()
     {
         OnStateUpdate();
@@ -49,6 +54,7 @@ public class GrabObject : MonoBehaviour
                     Collider2D pickUpItem = Physics2D.OverlapCircle(transform.position + Direction, 0.4f, pickUP); 
                     if (pickUpItem)
                     {
+                        _animatorPlayer.SetBool("isGrabing",true);
                         itemHolding = pickUpItem.gameObject;
                         itemHolding.GetComponent<ObjectThrow>().Grabed();
                         itemHolding.transform.position = objectGrabed.position;
@@ -66,6 +72,7 @@ public class GrabObject : MonoBehaviour
 
                 if (itemHolding != null)
                 {
+                    _animatorPlayer.SetBool("isGrabing",false);
                     itemHolding.transform.parent = null;
                     itemHolding.GetComponent<ObjectThrow>().ThrowObject();
                     if (itemHolding.GetComponent<Rigidbody2D>())

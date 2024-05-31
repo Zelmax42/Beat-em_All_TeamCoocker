@@ -13,7 +13,9 @@ public class ComboBar : MonoBehaviour
     public Sprite fullStars;
     public Sprite emptyStars;
     public int numOfStars;
+
     // Start is called before the first frame update
+
     void Start()
     {
         

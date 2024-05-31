@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelChanger: {fileID: 0}
   score: 0
-  ennemyKills: 24
-  stateStars: 4
+  hitEnnemy: 0
+  stateStars: 0

@@ -124,10 +124,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87dbfc44aec2bc94f8b1d6acee5d8e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gM: {fileID: 0}
   player: {fileID: 11400000, guid: f9eff765a4c6bde49bec2c282c4547c1, type: 2}
   GrabObject: {fileID: 0}
   _rb2d: {fileID: 8533527478558088934}
   image: {fileID: 0}
+  GameOver:
+    m_PersistentCalls:
+      m_Calls: []
   moveSpeed: 5
   playerMovement: 0
   jumpForce: 5
@@ -787,7 +791,7 @@ Transform:
   m_GameObject: {fileID: 8931802714547268364}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.08, y: 0.87, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

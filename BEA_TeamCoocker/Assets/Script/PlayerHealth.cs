@@ -13,13 +13,4 @@ public class PlayerHealth : MonoBehaviour
         _player.pvPlayer = 50;
         _player.currentStates = Player.States.IDLE;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        _PlayerHP = _player.pvPlayer;
-
-    }
-
-
 }

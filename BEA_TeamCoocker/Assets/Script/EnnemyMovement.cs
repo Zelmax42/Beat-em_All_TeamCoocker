@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class EnnemyMovement : MonoBehaviour
 {
@@ -19,8 +18,6 @@ public class EnnemyMovement : MonoBehaviour
 
     public EnnemyInit mobInit;
     public Player _player;
-
-    public UnityEvent CountEnnemy = new UnityEvent();
 
     private Transform _target;
     private Vector2 _moveDirection;
@@ -125,7 +122,6 @@ public class EnnemyMovement : MonoBehaviour
         } 
         if (_isDefeated)
         {
-            CountEnnemy.Invoke();
             TransitionToState(States.DEAD);
         }
 

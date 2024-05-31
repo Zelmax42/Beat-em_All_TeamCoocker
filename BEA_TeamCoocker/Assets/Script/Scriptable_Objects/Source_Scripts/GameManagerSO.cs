@@ -10,10 +10,9 @@ public class GameManagerSO : ScriptableObject
 {
     public LevelChanger levelChanger;
     public int score = 0;
-    public int ennemyKills = 0;
+    public int hitEnnemy = 0;
     public int stateStars = 0;
-   
-
+    
     public void QuitGame()
     {
         Application.Quit(); 
@@ -26,64 +25,47 @@ public class GameManagerSO : ScriptableObject
    
     public void CheckGameOver()
     {
-
         //levelChanger.FadeToNextLevel();
         SceneManager.LoadScene("UI_GameOver");
     }
-    public void EnnemyKilled(int value)
+
+    public void CheckWin()
     {
-        ennemyKills += value;
+        SceneManager.LoadScene("");
+    }
+    public void HitEnnemy(int value)
+    {
+        hitEnnemy += value;
         //1er étoiles
-        if (ennemyKills == 5)
+        if (hitEnnemy == 5)
         {
             stateStars += value;
         }
         //2eme étoiles
-        if (ennemyKills == 10)
+        if (hitEnnemy == 10)
         {
             stateStars += value;
         }
         //3eme étoiles
-        if (ennemyKills == 15)
+        if (hitEnnemy == 20)
         {
             stateStars += value;
         }
         //4eme étoiles
-        if (ennemyKills == 20)
+        if (hitEnnemy == 35)
         {
             stateStars += value;
         }
         //5eme étoiles
-        if (ennemyKills == 25)
+        if (hitEnnemy == 55)
         {
             stateStars += value;
         }
     }
 
-    public void AddScore(int value)
+    public void ComboBreaker()
     {
-        
-        score += value;
-       
-        if (ennemyKills > 5) 
-        {
-            score += value * 2;
-        }
-       
-        if (ennemyKills > 10)
-        {
-            score += value * 3;
-        }
-        
-        if (ennemyKills > 15)
-        {
-            score += value * 4;
-        }
-        
-        if (ennemyKills > 20)
-        {
-            score += value * 5;
-        }
-       
+        hitEnnemy = 0;
+        stateStars = 0;
     }
 }
