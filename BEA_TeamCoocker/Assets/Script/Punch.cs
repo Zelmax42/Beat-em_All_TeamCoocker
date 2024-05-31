@@ -1,30 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Punch : MonoBehaviour
 {
-    public Player playerData;
+        public Player playerData;
+        public AudioSource audioSource; 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == 8 )
+        private void Start()
         {
-            collision.GetComponent<Item>().Damaged();
+            audioSource = GetComponent<AudioSource>();
         }
 
-        if (collision.gameObject.layer == 7)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            collision.GetComponent<EnnemyMovement>().GotDamaged(playerData.dmgPlayer);
+            if (collision.gameObject.layer == 8)
+            {
+                collision.GetComponent<Item>().Damaged();
+
+                
+                PlayPunchSound();
+            }
+
+            if (collision.gameObject.layer == 7)
+            {
+                collision.GetComponent<EnnemyMovement>().GotDamaged(playerData.dmgPlayer);
+
+               
+                PlayPunchSound();
+            }
         }
-    }
 
-    void Start()
-    {
-       
-    }
+        private void PlayPunchSound()
+        {
+            if (audioSource != null && audioSource.clip != null)
+            {
+                audioSource.Play();
+            }
+        }
 
-  
     void Update()
     {
 
