@@ -232,4 +232,8 @@ public class BossV1 : MonoBehaviour
     {
         boss.bossHP -= value;
     }
+    public void OnEnable()
+    {
+        boss.isActive = true;
+    }
 }

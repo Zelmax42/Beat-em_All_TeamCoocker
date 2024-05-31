@@ -5,7 +5,6 @@ using UnityEngine;
 public class LaserBullet : MonoBehaviour
 {
     public float _bulletSpeed = 20f;
-    public float _laserDamage;
     private Rigidbody2D _bulletRigidbody;
     private float _chrono = 0f;
     public Player _player;

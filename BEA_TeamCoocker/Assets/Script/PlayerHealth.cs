@@ -17,7 +17,6 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _PlayerHP = _player.pvPlayer;
 
     }
 

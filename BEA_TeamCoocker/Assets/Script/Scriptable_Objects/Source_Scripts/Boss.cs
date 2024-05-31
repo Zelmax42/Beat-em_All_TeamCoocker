@@ -11,4 +11,5 @@ public class Boss : ScriptableObject
     public float laserDamage;
     public float moveSpeed;
     public float dashSpeed;
+    public bool isActive;
 }
