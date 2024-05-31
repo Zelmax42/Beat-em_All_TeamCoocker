@@ -22,8 +22,17 @@ public class Item : MonoBehaviour
     {
        if( collision.gameObject.layer == 7 && isThrow)
         {
-            Debug.Log("touché");
-            collision.gameObject.GetComponent<EnnemyMovement>().GotDamaged(objectData.damage);
+            Debug.Log("je touche");
+            try
+            {
+                collision.GetComponent<EnnemyMovement>().GotDamaged(objectData.damage);
+            }
+            catch (System.Exception) { }
+            try
+            {
+                collision.GetComponent<BossV1>().GotDamaged(objectData.damage);
+            }
+            catch (System.Exception) { }
             Damaged();
             GetComponent<ObjectThrow>().Bonked();
            

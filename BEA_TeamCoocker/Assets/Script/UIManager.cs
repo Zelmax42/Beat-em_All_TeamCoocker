@@ -6,12 +6,13 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public Player _player;
-    private Image _image;
+    public Boss boss;
+    public Image _PlayerPVimage;
     private float _maxPV=50;
+    public Image bossJaugeImage;
     // Start is called before the first frame update
     void Start()
     {
-        _image = GetComponent<Image>();
 
     }
 
@@ -19,20 +20,31 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         //Gestion de la barre de vie
-        _image.fillAmount = _player.pvPlayer / _maxPV;
+        _PlayerPVimage.fillAmount = _player.pvPlayer / _maxPV;
 
         if ( _player.pvPlayer > 25f)
         {
-            _image.color = Color.green;
+            _PlayerPVimage.color = Color.green;
         }
         else if (_player.pvPlayer > 10f && _player.pvPlayer < 25f)
         {
-            _image.color = Color.yellow;
+            _PlayerPVimage.color = Color.yellow;
         }
         else if (_player.pvPlayer < 10f)
         {
-            _image.color = Color.red;
+            _PlayerPVimage.color = Color.red;
         }
+
+        if(boss.isActive)
+        {
+            bossJaugeImage.gameObject.SetActive(true);
+            bossJaugeImage.fillAmount = boss.bossHP / _maxPV;           
+        }
+        else
+        {
+            bossJaugeImage.gameObject.SetActive(false);
+        }
+
     }
 
     public void CheckGameOver()

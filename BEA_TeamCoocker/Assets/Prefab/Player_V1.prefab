@@ -137,6 +137,7 @@ MonoBehaviour:
   groundCheckerSize: {x: 0.2, y: 0.04}
   groundCheckerTransform: {fileID: 6967689147756855}
   punch: {fileID: 6339322875377918274}
+  clamp: {fileID: 0}
 --- !u!114 &2326727724065033453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,6 +598,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1866409363148632171}
   - component: {fileID: 5686677729125853549}
+  - component: {fileID: 3026215573661494745}
   m_Layer: 10
   m_Name: HitBox_Attack
   m_TagString: PlayerHitBox
@@ -648,7 +650,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -664,6 +666,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &3026215573661494745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6339322875377918274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21301e2feb47fac44b3e9748d8162038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: f9eff765a4c6bde49bec2c282c4547c1, type: 2}
 --- !u!1 &8127320750983771054
 GameObject:
   m_ObjectHideFlags: 0
