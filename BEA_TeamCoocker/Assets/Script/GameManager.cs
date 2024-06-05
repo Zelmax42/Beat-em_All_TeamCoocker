@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public GameObject ennemiPool;
     public GameObject boss;
+    public Boss bossSO;
 
     public int _count;
 
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
             {
                 if (ennemi.CompareTag("Ennemi"))
                 {
-                    if (ennemi.GetComponentInChildren<EnnemyMovement>()._nbPV <= 0)
+                    if (!ennemi.gameObject.activeSelf)
                     {
                         _count++;
                     }
@@ -45,6 +46,7 @@ public class GameManager : MonoBehaviour
         if (!ennemiPool.activeSelf)
         {
             boss.SetActive(true);
+            bossSO.isActive = true;
             Camera.main.GetComponent<Clamping>().isTracking = false;
         }
     }

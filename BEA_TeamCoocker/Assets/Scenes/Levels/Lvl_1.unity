@@ -1576,6 +1576,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ennemiPool: {fileID: 1528803615}
   boss: {fileID: 1360481930}
+  bossSO: {fileID: 11400000, guid: 462b6911fdbd01649919bab24b7cba05, type: 2}
   _count: 0
 --- !u!4 &1140046138
 Transform:
