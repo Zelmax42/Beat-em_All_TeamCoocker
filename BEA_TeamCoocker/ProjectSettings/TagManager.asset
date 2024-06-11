@@ -10,6 +10,7 @@ TagManager:
   - ViseeLaser
   - Canon
   - BossHitBox
+  - GrabText
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     public GrabObject GrabObject;
     public Rigidbody2D _rb2d;
     public SpriteRenderer image;
+   
 
     [Header("Speed")]
     public float moveSpeed = 5f;
