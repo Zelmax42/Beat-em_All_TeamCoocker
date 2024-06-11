@@ -387,7 +387,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1686225589, guid: bd8049aaa6e529e4aba6250b8815c838, type: 3}
+  m_Sprite: {fileID: 1126723531, guid: 0908a58a1c9d2664ba92ced9f5cb59dc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -397,7 +397,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!95 &771503736232112323
 Animator:
   serializedVersion: 5
