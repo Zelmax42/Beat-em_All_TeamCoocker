@@ -9,6 +9,7 @@ public class Boss : ScriptableObject
     public float bossHP;
     public float dashDamage;
     public float laserDamage;
+    public float piouPiouDamage;
     public float moveSpeed;
     public float dashSpeed;
     public bool isActive;

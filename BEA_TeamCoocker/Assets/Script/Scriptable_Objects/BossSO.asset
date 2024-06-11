@@ -15,6 +15,7 @@ MonoBehaviour:
   bossHP: -1
   dashDamage: 2.5
   laserDamage: 15
+  piouPiouDamage: 1
   moveSpeed: 2
   dashSpeed: 2
   isActive: 1

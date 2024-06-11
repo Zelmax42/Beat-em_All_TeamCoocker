@@ -18,8 +18,10 @@ public class BossV1 : MonoBehaviour
     public float _chronoDash = 0f;
     public float _chronoLaser = 0f;
     public float _chronoVisee = 0f;
-    private Transform _target;
+    public float _chronoPiou = 0f;
+    public Transform _target;
     public GameObject _laserBullet;
+    public GameObject _laserPiouPiou;
     public GameObject _viseurLaser;
     public GameObject _bossHitBox;
 
@@ -85,6 +87,15 @@ public class BossV1 : MonoBehaviour
 
     public void OnStateUpdate()
     {
+        if (_chronoPiou >= 1f)
+        {
+            Shoot();
+            _chronoPiou = 0f;
+        }
+        else
+        {
+            _chronoPiou += Time.deltaTime;
+        }
         if (_chrono >= 2f && _currentState!=States.DASH)
         {
             RandomStates();
@@ -197,6 +208,11 @@ public class BossV1 : MonoBehaviour
             //_moveDirection.Normalize();
             
         }
+    }
+
+    public void Shoot()
+    {
+        Instantiate(_laserPiouPiou, GameObject.FindGameObjectWithTag("Canon").transform.position, Quaternion.identity);
     }
 
     public void LaserAttack()
