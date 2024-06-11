@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BossHitBox : MonoBehaviour
 {
-    public Player _player;
+    public Player player;
     public Boss boss;
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,8 @@ public class BossHitBox : MonoBehaviour
     {
         if (collision.gameObject.layer == 10)
         {
-            _player.pvPlayer -= boss.dashDamage;
+            player.pvPlayer -= boss.dashDamage;
+            player.isHurted = true;
         }
     }
 }
