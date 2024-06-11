@@ -13,6 +13,7 @@ public class EnnemiePunch : MonoBehaviour
         if (collision.gameObject.layer == 10)
         {
             player.pvPlayer -= transform.parent.GetComponent<EnnemyMovement>()._damage;
+            player.isHurted = true;
             //pour le combo
             comboBreaker.Invoke();
            

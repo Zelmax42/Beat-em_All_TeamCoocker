@@ -5,7 +5,7 @@ using UnityEngine;
 public class GrabObject : MonoBehaviour
 {
     private Animator _animatorPlayer;
-    public ObjectData objectData;
+
     public Player player;
     public Transform objectGrabed;
     public LayerMask pickUP;
@@ -68,6 +68,7 @@ public class GrabObject : MonoBehaviour
                         itemHolding.transform.position = objectGrabed.position;
                         itemHolding.transform.parent = objectGrabed.transform;
                         itemHolding.transform.localEulerAngles = objectGrabed.localEulerAngles;
+                        itemHolding.GetComponent<ObjectThrow>().objectThrow = true;
                         if (itemHolding.GetComponent<Rigidbody2D>())
                             itemHolding.GetComponent<Rigidbody2D>().simulated = false;
                         TransitionToState(States.HOLDING);
@@ -84,6 +85,7 @@ public class GrabObject : MonoBehaviour
                     itemHolding.transform.parent = null;
                     itemHolding.GetComponent<Item>().isPickUp = false;
                     itemHolding.GetComponent<ObjectThrow>().ThrowObject();
+                    itemHolding.GetComponent<ObjectThrow>().objectThrow = false;
                     if (itemHolding.GetComponent<Rigidbody2D>())
                         itemHolding.GetComponent<Rigidbody2D>().simulated = true;
                     itemHolding = null;
@@ -130,5 +132,10 @@ public class GrabObject : MonoBehaviour
         currentStates = newState;
         OnStateEnter();
     }
+
+    /*public void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere
+    }*/
 }
 

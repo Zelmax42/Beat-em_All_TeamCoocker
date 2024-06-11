@@ -12,7 +12,8 @@ public class BossV1 : MonoBehaviour
 
     [Header("Mouvement")]
     public Vector2 _moveDirection;
-    public float _chrono = 0f;   
+    public float _chrono = 0f;
+    public bool isInArena;
 
     [Header("Attack")]
     public float _chronoDash = 0f;
@@ -49,6 +50,7 @@ public class BossV1 : MonoBehaviour
         _clamp = Camera.main.GetComponent<Clamping>();
         boss.isActive = false;
         boss.bossHP = 30;
+        isInArena = true;
     }
 
     void Update()
@@ -69,7 +71,11 @@ public class BossV1 : MonoBehaviour
             case States.IDLE:
                 break;
             case States.MOVE:
-                BossMovement();
+                if (isInArena)
+                {
+                    BossMovement();
+                }
+                
                 break;
             case States.DASH:
                 _bossHitBox.SetActive(true);
@@ -85,10 +91,15 @@ public class BossV1 : MonoBehaviour
 
     public void OnStateUpdate()
     {
-        if (_chrono >= 2f && _currentState!=States.DASH)
+        if (_chrono >= 2f && _currentState!=States.DASH && isInArena)
         {
             RandomStates();
             _chrono = 0f;
+        }
+        else if (!isInArena)
+        {
+            _moveDirection = _target.position - transform.position;
+            TransitionToState(States.MOVE);
         }
         else
         {
@@ -243,8 +254,10 @@ public class BossV1 : MonoBehaviour
         boss.bossHP -= value;
         hurtSFX.Play();
     }
+
+    /*
     public void OnEnable()
     {
         boss.isActive = true;
-    }
+    }*/
 }

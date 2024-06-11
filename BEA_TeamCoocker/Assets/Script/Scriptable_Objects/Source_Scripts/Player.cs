@@ -14,6 +14,7 @@ public class Player : ScriptableObject
     public int punchComboPLayer = 5;
     public bool isGrabing = false;
     public bool isGrounded = false;
+    public bool isHurted = false;
 
     public States currentStates = States.IDLE;
     public enum States
