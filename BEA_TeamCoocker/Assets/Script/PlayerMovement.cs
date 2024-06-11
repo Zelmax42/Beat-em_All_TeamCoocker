@@ -36,7 +36,8 @@ public class PlayerMovement : MonoBehaviour
     private Animator _animator;
     private Clamping _clamp;
     public AudioSource healsfx;
-   
+    public AudioSource hurtSFX;
+
     void Start()
     {
         GrabObject = gameObject.GetComponent<GrabObject>();
@@ -118,6 +119,8 @@ public class PlayerMovement : MonoBehaviour
                 break;
             case Player.States.HURT:
                 _animator.SetTrigger("Hurted");
+                player.isHurted = false;
+                hurtSFX.Play();
                 break;
             case Player.States.FALL:
                 _rb2d.gravityScale = 2f;
@@ -132,6 +135,11 @@ public class PlayerMovement : MonoBehaviour
     
     public void OnStateUpdate()
     {
+        if (player.isHurted)
+        {
+            TransitionToState(Player.States.HURT);
+        }
+
         switch (player.currentStates)
         {
             case Player.States.IDLE:
@@ -223,6 +231,10 @@ public class PlayerMovement : MonoBehaviour
                 }
                     break;   
             case Player.States.HURT:
+                if(player.pvPlayer > 0 && _animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.8 )
+                {
+                    TransitionToState(Player.States.IDLE);
+                }
                 break;
             case Player.States.ULTIMATE:
                 break;

@@ -176,7 +176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bulletSpeed: 20
-  _player: {fileID: 11400000, guid: f9eff765a4c6bde49bec2c282c4547c1, type: 2}
+  player: {fileID: 11400000, guid: f9eff765a4c6bde49bec2c282c4547c1, type: 2}
   boss: {fileID: 11400000, guid: 462b6911fdbd01649919bab24b7cba05, type: 2}
 --- !u!61 &6022085613845560242
 BoxCollider2D:

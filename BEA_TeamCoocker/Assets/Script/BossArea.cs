@@ -18,7 +18,11 @@ public class BossArea : MonoBehaviour
     }
     public void OnTriggerExit2D(Collider2D collision)
     {
-        Boss._moveDirection *= -1f;
-        Debug.Log("je sors");
+        Boss.isInArena = false;
+    }
+
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        Boss.isInArena = true;
     }
 }

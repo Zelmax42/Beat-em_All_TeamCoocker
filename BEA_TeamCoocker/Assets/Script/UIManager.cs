@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     public Player _player;
     public Boss boss;
     public Image _PlayerPVimage;
+    public Animator playerImage;
     private float _maxPV=50;
     private float _maxBossHP = 30;
 
@@ -43,14 +44,18 @@ public class UIManager : MonoBehaviour
 
         if(boss.isActive)
         {
-            bossJaugeImage.gameObject.SetActive(true);
+            bossJaugeImage.transform.parent.gameObject.SetActive(true);
             bossJaugeImage.fillAmount = boss.bossHP / _maxBossHP;           
         }
         else
         {
-            bossJaugeImage.gameObject.SetActive(false);
+            bossJaugeImage.transform.parent.gameObject.SetActive(false);
         }
 
+        if (_player.currentStates == Player.States.HURT)
+        {
+            playerImage.SetTrigger("Hurted");
+        }
     }
 
     public void CheckGameOver()
