@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: BossSO
   m_EditorClassIdentifier: 
   bossHP: -1
-  dashDamage: 10
-  laserDamage: 25
+  dashDamage: 4
+  laserDamage: 20
+  piouPiouDamage: 2
   moveSpeed: 2
   dashSpeed: 2
   isActive: 1

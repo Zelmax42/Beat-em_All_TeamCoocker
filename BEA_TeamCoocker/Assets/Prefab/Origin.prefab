@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5779167924341820941}
   - component: {fileID: 5218777225361267369}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 6086577787373413333}
   - component: {fileID: 3748756417877610241}
   - component: {fileID: 6022085613845560242}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: Origin
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 2728623375175366730}
   - component: {fileID: 7482276450350328279}
   - component: {fileID: 1404486184715703164}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: LaserBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}

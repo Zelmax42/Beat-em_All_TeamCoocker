@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 8012854627600929594}
   - component: {fileID: 1492514469964186876}
   - component: {fileID: 4654865368227072521}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: HitBox
   m_TagString: BossHitBox
   m_Icon: {fileID: 0}
@@ -696,7 +696,10 @@ MonoBehaviour:
   _chronoDash: 0
   _chronoLaser: 0
   _chronoVisee: 0
+  _chronoPiou: 0
+  _target: {fileID: 0}
   _laserBullet: {fileID: 6335456921845203684, guid: c00c63ce7b49ef54fb4fc3d093b13511, type: 3}
+  _laserPiouPiou: {fileID: 4584102965789723102, guid: 42ec9f2e0fdd67c4fbe163bd009126b5, type: 3}
   _viseurLaser: {fileID: 1484549201218575933}
   _bossHitBox: {fileID: 1706336689751614024}
   _clamp: {fileID: 0}
@@ -739,7 +742,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1303377818208675441}
   - component: {fileID: 4419516285398902621}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: FireEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
