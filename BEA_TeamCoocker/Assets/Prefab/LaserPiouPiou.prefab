@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5959415106507514090}
   - component: {fileID: 3113413350943524676}
   - component: {fileID: 538002229384659801}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: LaserBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 4466807657959546750}
   - component: {fileID: 159340032199748201}
   - component: {fileID: -3949597624268944500}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: LaserPiouPiou
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb2d: {fileID: -3949597624268944500}
-  _speed: 5
+  _speed: 8
   _playerTarget: {fileID: 0}
   _bulletDirection: {x: 0, y: 0}
   boss: {fileID: 11400000, guid: 462b6911fdbd01649919bab24b7cba05, type: 2}
@@ -266,7 +266,7 @@ GameObject:
   m_Component:
   - component: {fileID: 393143219721469904}
   - component: {fileID: 1118622206352220632}
-  m_Layer: 7
+  m_Layer: 12
   m_Name: SFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}

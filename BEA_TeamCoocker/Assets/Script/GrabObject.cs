@@ -5,13 +5,13 @@ using UnityEngine;
 public class GrabObject : MonoBehaviour
 {
     private Animator _animatorPlayer;
-    public ObjectData objectData;
+
     public Player player;
     public Transform objectGrabed;
     public LayerMask pickUP;
     public bool itemThrow;
-    
-    
+
+
     public Vector3 Direction {get;set;}
 
     public GameObject itemHolding;
@@ -49,9 +49,16 @@ public class GrabObject : MonoBehaviour
         {
             case States.NOHOLDING:
 
+                Collider2D pickUpItem = Physics2D.OverlapCircle(transform.position + Direction, 0.4f, pickUP);
+                if(pickUpItem)
+                {
+                    pickUpItem.GetComponentInChildren<TextGrab>(true).gameObject.SetActive(true);
+                    pickUpItem.GetComponentInChildren<TextGrab>(true).pickable = true;
+
+                }
                 if (player.isGrabing)
                 {
-                    Collider2D pickUpItem = Physics2D.OverlapCircle(transform.position + Direction, 0.4f, pickUP); 
+                   
                     if (pickUpItem)
                     {
                         _animatorPlayer.SetBool("isGrabing",true);
@@ -61,6 +68,7 @@ public class GrabObject : MonoBehaviour
                         itemHolding.transform.position = objectGrabed.position;
                         itemHolding.transform.parent = objectGrabed.transform;
                         itemHolding.transform.localEulerAngles = objectGrabed.localEulerAngles;
+                        itemHolding.GetComponent<ObjectThrow>().objectThrow = true;
                         if (itemHolding.GetComponent<Rigidbody2D>())
                             itemHolding.GetComponent<Rigidbody2D>().simulated = false;
                         TransitionToState(States.HOLDING);
@@ -77,6 +85,7 @@ public class GrabObject : MonoBehaviour
                     itemHolding.transform.parent = null;
                     itemHolding.GetComponent<Item>().isPickUp = false;
                     itemHolding.GetComponent<ObjectThrow>().ThrowObject();
+                    itemHolding.GetComponent<ObjectThrow>().objectThrow = false;
                     if (itemHolding.GetComponent<Rigidbody2D>())
                         itemHolding.GetComponent<Rigidbody2D>().simulated = true;
                     itemHolding = null;
@@ -123,5 +132,10 @@ public class GrabObject : MonoBehaviour
         currentStates = newState;
         OnStateEnter();
     }
+
+    /*public void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere
+    }*/
 }
 

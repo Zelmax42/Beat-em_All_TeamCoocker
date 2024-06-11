@@ -21,4 +21,5 @@ MonoBehaviour:
   punchComboPLayer: 5
   isGrabing: 0
   isGrounded: 1
+  isHurted: 0
   currentStates: 0

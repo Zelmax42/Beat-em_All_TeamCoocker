@@ -7,7 +7,7 @@ public class LaserBullet : MonoBehaviour
     public float _bulletSpeed = 20f;
     private Rigidbody2D _bulletRigidbody;
     private float _chrono = 0f;
-    public Player _player;
+    public Player player;
     public Boss boss;
 
     // Start is called before the first frame update
@@ -27,7 +27,8 @@ public class LaserBullet : MonoBehaviour
     {
         if (collision.gameObject.layer == 10)
         {
-            _player.pvPlayer -= boss.laserDamage;            
+            player.pvPlayer -= boss.laserDamage;
+            player.isHurted = true;
         }
     }
 }

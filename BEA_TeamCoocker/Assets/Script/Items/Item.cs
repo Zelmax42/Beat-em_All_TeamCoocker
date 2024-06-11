@@ -70,6 +70,8 @@ public class Item : MonoBehaviour
             GetComponent<ObjectThrow>().Bonked();
         }
 
+      
+
     }
 
     public void Drop() 
