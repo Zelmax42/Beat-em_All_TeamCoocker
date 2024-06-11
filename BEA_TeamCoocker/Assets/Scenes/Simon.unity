@@ -247,11 +247,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 10707478162517392, guid: 8eac54d30a89b5f4081c4985576d9757, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.33
+      value: -5.79
       objectReference: {fileID: 0}
     - target: {fileID: 10707478162517392, guid: 8eac54d30a89b5f4081c4985576d9757, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.02
+      value: 2.45
       objectReference: {fileID: 0}
     - target: {fileID: 10707478162517392, guid: 8eac54d30a89b5f4081c4985576d9757, type: 3}
       propertyPath: m_LocalPosition.z
@@ -598,6 +598,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnnemiBig
       objectReference: {fileID: 0}
+    - target: {fileID: 5115514329972585970, guid: e011394fe8245f242948b0a05ef12d2d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6568285621467851286, guid: e011394fe8245f242948b0a05ef12d2d, type: 3}
       propertyPath: clampBoundaries.w
       value: 4
@@ -629,11 +633,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1933035244471292938, guid: e011394fe8245f242948b0a05ef12d2d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.13
+      value: -0.85
       objectReference: {fileID: 0}
     - target: {fileID: 1933035244471292938, guid: e011394fe8245f242948b0a05ef12d2d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: -4.48
       objectReference: {fileID: 0}
     - target: {fileID: 1933035244471292938, guid: e011394fe8245f242948b0a05ef12d2d, type: 3}
       propertyPath: m_LocalPosition.z

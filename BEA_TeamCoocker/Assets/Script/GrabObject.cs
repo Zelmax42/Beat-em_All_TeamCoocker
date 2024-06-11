@@ -10,8 +10,8 @@ public class GrabObject : MonoBehaviour
     public Transform objectGrabed;
     public LayerMask pickUP;
     public bool itemThrow;
-    
-    
+
+
     public Vector3 Direction {get;set;}
 
     public GameObject itemHolding;
@@ -49,9 +49,16 @@ public class GrabObject : MonoBehaviour
         {
             case States.NOHOLDING:
 
+                Collider2D pickUpItem = Physics2D.OverlapCircle(transform.position + Direction, 0.4f, pickUP);
+                if(pickUpItem)
+                {
+                    pickUpItem.GetComponentInChildren<TextGrab>(true).gameObject.SetActive(true);
+                    pickUpItem.GetComponentInChildren<TextGrab>(true).pickable = true;
+
+                }
                 if (player.isGrabing)
                 {
-                    Collider2D pickUpItem = Physics2D.OverlapCircle(transform.position + Direction, 0.4f, pickUP); 
+                   
                     if (pickUpItem)
                     {
                         _animatorPlayer.SetBool("isGrabing",true);
