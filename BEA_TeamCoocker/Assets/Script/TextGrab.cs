@@ -33,5 +33,9 @@ public class TextGrab : MonoBehaviour
         }
     }
 
-
+    public void ResetGrabText()
+    {
+        pickable = true;
+        chrono = 0f;
+    }
 }

@@ -53,7 +53,7 @@ public class GrabObject : MonoBehaviour
                 if(pickUpItem)
                 {
                     pickUpItem.GetComponentInChildren<TextGrab>(true).gameObject.SetActive(true);
-                    pickUpItem.GetComponentInChildren<TextGrab>(true).pickable = true;
+                    pickUpItem.GetComponentInChildren<TextGrab>(true).ResetGrabText();
 
                 }
                 if (player.isGrabing)
