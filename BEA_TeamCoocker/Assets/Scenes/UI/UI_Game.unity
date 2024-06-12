@@ -1126,6 +1126,7 @@ MonoBehaviour:
   _PlayerPVimage: {fileID: 677071313}
   playerImage: {fileID: 1860040575}
   bossJaugeImage: {fileID: 1162809344}
+  bossFontJauge: {fileID: 2008230534}
 --- !u!4 &1346554229
 Transform:
   m_ObjectHideFlags: 0

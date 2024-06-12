@@ -50,7 +50,6 @@ public class BossV1 : MonoBehaviour
         _bossHitBox = GameObject.FindGameObjectWithTag("BossHitBox");
         _bossHitBox.SetActive(false);
         _clamp = Camera.main.GetComponent<Clamping>();
-        boss.isActive = false;
         boss.bossHP = 30;
         isInArena = true;
     }

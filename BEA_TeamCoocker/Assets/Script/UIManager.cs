@@ -16,11 +16,13 @@ public class UIManager : MonoBehaviour
 
 
     public Image bossJaugeImage;
+
     // Start is called before the first frame update
 
     void Start()
     {
-
+        boss.isActive = false;
+        bossJaugeImage.transform.parent.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -44,6 +46,7 @@ public class UIManager : MonoBehaviour
 
         if(boss.isActive)
         {
+
             bossJaugeImage.transform.parent.gameObject.SetActive(true);
             bossJaugeImage.fillAmount = boss.bossHP / _maxBossHP;           
         }
